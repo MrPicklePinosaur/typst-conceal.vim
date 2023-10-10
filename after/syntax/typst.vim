@@ -11,826 +11,829 @@ syntax match typMathShorthand '\[|' conceal cchar=⟦
 syntax match typMathShorthand '\.\.\.' conceal cchar=…
 syntax match typMathShorthand '!=' conceal cchar=≠
 
+fun! s:ConcealFn(pat, cchar)
+    exe "syntax match typstMathSymbol '".a:pat."' contained conceal cchar=".a:cchar
+endfun
 
-syntax match typstMathSymbol 'paren\.l' contained conceal cchar=(
-syntax match typstMathSymbol 'paren\.r' contained conceal cchar=)
-syntax match typstMathSymbol 'paren\.t' contained conceal cchar=⏜
-syntax match typstMathSymbol 'paren\.b' contained conceal cchar=⏝
-syntax match typstMathSymbol 'brace\.l' contained conceal cchar={
-syntax match typstMathSymbol 'brace\.r' contained conceal cchar=}
-syntax match typstMathSymbol 'brace\.t' contained conceal cchar=⏞
-syntax match typstMathSymbol 'brace\.b' contained conceal cchar=⏟
-syntax match typstMathSymbol 'bracket\.l' contained conceal cchar={
-syntax match typstMathSymbol 'bracket\.l\.double' contained conceal cchar=⟦
-syntax match typstMathSymbol 'bracket\.r' contained conceal cchar=}
-syntax match typstMathSymbol 'bracket\.r\.double' contained conceal cchar=⟧
-syntax match typstMathSymbol 'bracket\.t' contained conceal cchar=⎴
-syntax match typstMathSymbol 'bracket\.b' contained conceal cchar=⎵
-syntax match typstMathSymbol 'turtle\.l' contained conceal cchar=〔
-syntax match typstMathSymbol 'turtle\.r' contained conceal cchar=〕
-syntax match typstMathSymbol 'turtle\.t' contained conceal cchar=⏠
-syntax match typstMathSymbol 'turtle\.b' contained conceal cchar=⏡
-syntax match typstMathSymbol 'bar\.v' contained conceal cchar=|
-syntax match typstMathSymbol 'bar\.v\.double' contained conceal cchar=‖
-syntax match typstMathSymbol 'bar\.v\.triple' contained conceal cchar=⦀
-syntax match typstMathSymbol 'bar\.v\.broken' contained conceal cchar=¦
-syntax match typstMathSymbol 'bar\.v\.circle' contained conceal cchar=⦶
-syntax match typstMathSymbol 'bar\.h' contained conceal cchar=―
-syntax match typstMathSymbol 'fence\.l' contained conceal cchar=⧘
-syntax match typstMathSymbol 'fence\.l\.double' contained conceal cchar=⧚
-syntax match typstMathSymbol 'fence\.r' contained conceal cchar=⧙
-syntax match typstMathSymbol 'fence\.r\.double' contained conceal cchar=⧛
-syntax match typstMathSymbol 'fence\.dotted' contained conceal cchar=⦙
-syntax match typstMathSymbol 'angle' contained conceal cchar=∠
-syntax match typstMathSymbol 'angle\.l' contained conceal cchar=⟨
-syntax match typstMathSymbol 'angle\.r' contained conceal cchar=⟩
-syntax match typstMathSymbol 'angle\.l\.double' contained conceal cchar=《
-syntax match typstMathSymbol 'angle\.r\.double' contained conceal cchar=》
-syntax match typstMathSymbol 'angle\.acute' contained conceal cchar=⦟
-syntax match typstMathSymbol 'angle\.arc' contained conceal cchar=∡
-syntax match typstMathSymbol 'angle\.arc\.rev' contained conceal cchar=⦛
-syntax match typstMathSymbol 'angle\.rev' contained conceal cchar=⦣
-syntax match typstMathSymbol 'angle\.right' contained conceal cchar=∟
-syntax match typstMathSymbol 'angle\.right\.rev' contained conceal cchar=⯾
-syntax match typstMathSymbol 'angle\.right\.arc' contained conceal cchar=⊾
-syntax match typstMathSymbol 'angle\.right\.dot' contained conceal cchar=⦝
-syntax match typstMathSymbol 'angle\.right\.sq' contained conceal cchar=⦜
-syntax match typstMathSymbol 'angle\.spatial' contained conceal cchar=⟀
-syntax match typstMathSymbol 'angle\.spheric' contained conceal cchar=∢
-syntax match typstMathSymbol 'angle\.spheric\.rev' contained conceal cchar=⦠
-syntax match typstMathSymbol 'angle\.spheric\.top' contained conceal cchar=⦡
-syntax match typstMathSymbol 'amp' contained conceal cchar=&
-syntax match typstMathSymbol 'amp\.inv' contained conceal cchar=⅋
-syntax match typstMathSymbol 'ast\.op' contained conceal cchar=∗
-syntax match typstMathSymbol 'ast\.basic' contained conceal cchar=*
-syntax match typstMathSymbol 'ast\.low' contained conceal cchar=⁎
-syntax match typstMathSymbol 'ast\.double' contained conceal cchar=⁑
-syntax match typstMathSymbol 'ast\.triple' contained conceal cchar=⁂
-syntax match typstMathSymbol 'ast\.small' contained conceal cchar=﹡
-syntax match typstMathSymbol 'ast\.circle' contained conceal cchar=⊛
-syntax match typstMathSymbol 'ast\.square' contained conceal cchar=⧆
-syntax match typstMathSymbol 'at' contained conceal cchar=@
-syntax match typstMathSymbol 'backslash' contained conceal cchar=\
-syntax match typstMathSymbol 'backslash\.circle' contained conceal cchar=⦸
-syntax match typstMathSymbol 'backslash\.not' contained conceal cchar=⧷
-syntax match typstMathSymbol 'co' contained conceal cchar=℅
-syntax match typstMathSymbol 'colon' contained conceal cchar=:
-syntax match typstMathSymbol 'colon\.eq' contained conceal cchar=≔
-syntax match typstMathSymbol 'colon\.double\.eq' contained conceal cchar=⩴
-syntax match typstMathSymbol 'comma' contained conceal cchar=,
-syntax match typstMathSymbol 'dagger' contained conceal cchar=†
-syntax match typstMathSymbol 'dagger\.double' contained conceal cchar=‡
-syntax match typstMathSymbol 'dash\.en' contained conceal cchar=–
-syntax match typstMathSymbol 'dash\.em' contained conceal cchar=—
-syntax match typstMathSymbol 'dash\.fig' contained conceal cchar=‒
-syntax match typstMathSymbol 'dash\.wave' contained conceal cchar=〜
-syntax match typstMathSymbol 'dash\.colon' contained conceal cchar=∹
-syntax match typstMathSymbol 'dash\.circle' contained conceal cchar=⊝
-syntax match typstMathSymbol 'dash\.wave\.double' contained conceal cchar=〰
-syntax match typstMathSymbol 'dot\.op' contained conceal cchar=⋅
-syntax match typstMathSymbol 'dot\.basic' contained conceal cchar=.
-syntax match typstMathSymbol 'dot\.c' contained conceal cchar=·
-syntax match typstMathSymbol 'dot\.circle' contained conceal cchar=⊙
-syntax match typstMathSymbol 'dot\.circle\.big' contained conceal cchar=⨀
-syntax match typstMathSymbol 'dot\.square' contained conceal cchar=⊡
-syntax match typstMathSymbol 'dot\.double' contained conceal cchar=¨
+call s:ConcealFn('paren\.l', '(')
+call s:ConcealFn('paren\.r', ')')
+call s:ConcealFn('paren\.t', '⏜')
+call s:ConcealFn('paren\.b', '⏝')
+call s:ConcealFn('brace\.l', '{')
+call s:ConcealFn('brace\.r', '}')
+call s:ConcealFn('brace\.t', '⏞')
+call s:ConcealFn('brace\.b', '⏟')
+call s:ConcealFn('bracket\.l', '{')
+call s:ConcealFn('bracket\.l\.double', '⟦')
+call s:ConcealFn('bracket\.r', '}')
+call s:ConcealFn('bracket\.r\.double', '⟧')
+call s:ConcealFn('bracket\.t', '⎴')
+call s:ConcealFn('bracket\.b', '⎵')
+call s:ConcealFn('turtle\.l', '〔')
+call s:ConcealFn('turtle\.r', '〕')
+call s:ConcealFn('turtle\.t', '⏠')
+call s:ConcealFn('turtle\.b', '⏡')
+call s:ConcealFn('bar\.v', '|')
+call s:ConcealFn('bar\.v\.double', '‖')
+call s:ConcealFn('bar\.v\.triple', '⦀')
+call s:ConcealFn('bar\.v\.broken', '¦')
+call s:ConcealFn('bar\.v\.circle', '⦶')
+call s:ConcealFn('bar\.h', '―')
+call s:ConcealFn('fence\.l', '⧘')
+call s:ConcealFn('fence\.l\.double', '⧚')
+call s:ConcealFn('fence\.r', '⧙')
+call s:ConcealFn('fence\.r\.double', '⧛')
+call s:ConcealFn('fence\.dotted', '⦙')
+call s:ConcealFn('angle', '∠')
+call s:ConcealFn('angle\.l', '⟨')
+call s:ConcealFn('angle\.r', '⟩')
+call s:ConcealFn('angle\.l\.double', '《')
+call s:ConcealFn('angle\.r\.double', '》')
+call s:ConcealFn('angle\.acute', '⦟')
+call s:ConcealFn('angle\.arc', '∡')
+call s:ConcealFn('angle\.arc\.rev', '⦛')
+call s:ConcealFn('angle\.rev', '⦣')
+call s:ConcealFn('angle\.right', '∟')
+call s:ConcealFn('angle\.right\.rev', '⯾')
+call s:ConcealFn('angle\.right\.arc', '⊾')
+call s:ConcealFn('angle\.right\.dot', '⦝')
+call s:ConcealFn('angle\.right\.sq', '⦜')
+call s:ConcealFn('angle\.spatial', '⟀')
+call s:ConcealFn('angle\.spheric', '∢')
+call s:ConcealFn('angle\.spheric\.rev', '⦠')
+call s:ConcealFn('angle\.spheric\.top', '⦡')
+call s:ConcealFn('amp', '&')
+call s:ConcealFn('amp\.inv', '⅋')
+call s:ConcealFn('ast\.op', '∗')
+call s:ConcealFn('ast\.basic', '*')
+call s:ConcealFn('ast\.low', '⁎')
+call s:ConcealFn('ast\.double', '⁑')
+call s:ConcealFn('ast\.triple', '⁂')
+call s:ConcealFn('ast\.small', '﹡')
+call s:ConcealFn('ast\.circle', '⊛')
+call s:ConcealFn('ast\.square', '⧆')
+call s:ConcealFn('at', '@')
+call s:ConcealFn('backslash', '\')
+call s:ConcealFn('backslash\.circle', '⦸')
+call s:ConcealFn('backslash\.not', '⧷')
+call s:ConcealFn('co', '℅')
+call s:ConcealFn('colon', ':')
+call s:ConcealFn('colon\.eq', '≔')
+call s:ConcealFn('colon\.double\.eq', '⩴')
+call s:ConcealFn('comma', ',')
+call s:ConcealFn('dagger', '†')
+call s:ConcealFn('dagger\.double', '‡')
+call s:ConcealFn('dash\.en', '–')
+call s:ConcealFn('dash\.em', '—')
+call s:ConcealFn('dash\.fig', '‒')
+call s:ConcealFn('dash\.wave', '〜')
+call s:ConcealFn('dash\.colon', '∹')
+call s:ConcealFn('dash\.circle', '⊝')
+call s:ConcealFn('dash\.wave\.double', '〰')
+call s:ConcealFn('dot\.op', '⋅')
+call s:ConcealFn('dot\.basic', '.')
+call s:ConcealFn('dot\.c', '·')
+call s:ConcealFn('dot\.circle', '⊙')
+call s:ConcealFn('dot\.circle\.big', '⨀')
+call s:ConcealFn('dot\.square', '⊡')
+call s:ConcealFn('dot\.double', '¨')
 " syntax match typstMathSymbol 'dot\.triple' ⃛contained conceal cchar= ⃛
 " syntax match typstMathSymbol 'dot\.quad' contained conceal cchar= ⃛
-syntax match typstMathSymbol 'excl' contained conceal cchar=!
-syntax match typstMathSymbol 'excl\.double' contained conceal cchar=‼
-syntax match typstMathSymbol 'excl\.inv' contained conceal cchar=¡
-syntax match typstMathSymbol 'excl\.quest' contained conceal cchar=⁉
-syntax match typstMathSymbol 'quest' contained conceal cchar=?
-syntax match typstMathSymbol 'quest\.double' contained conceal cchar=⁇
-syntax match typstMathSymbol 'quest\.excl' contained conceal cchar=⁈
-syntax match typstMathSymbol 'quest\.inv' contained conceal cchar=¿
-syntax match typstMathSymbol 'interrobang' contained conceal cchar=‽
-syntax match typstMathSymbol 'hash' contained conceal cchar=#
-syntax match typstMathSymbol 'hyph' contained conceal cchar=‐
-syntax match typstMathSymbol 'hyph\.minus' contained conceal cchar=-
-syntax match typstMathSymbol 'hyph\.nobreak' contained conceal cchar=‑
-syntax match typstMathSymbol 'hyph\.point' contained conceal cchar=‧
-syntax match typstMathSymbol 'hyph\.soft' contained conceal cchar=­
-syntax match typstMathSymbol 'percent' contained conceal cchar=%
-syntax match typstMathSymbol 'copyright' contained conceal cchar=©
-syntax match typstMathSymbol 'copyright\.sound' contained conceal cchar=℗
-syntax match typstMathSymbol 'permille' contained conceal cchar=‰
-syntax match typstMathSymbol 'pilcrow' contained conceal cchar=¶
-syntax match typstMathSymbol 'pilcrow\.rev' contained conceal cchar=⁋
-syntax match typstMathSymbol 'section' contained conceal cchar=§
-syntax match typstMathSymbol 'semi' contained conceal cchar=;
-syntax match typstMathSymbol 'semi\.rev' contained conceal cchar=⁏
-syntax match typstMathSymbol 'slash' contained conceal cchar=/
-syntax match typstMathSymbol 'slash\.double' contained conceal cchar=⫽
-syntax match typstMathSymbol 'slash\.triple' contained conceal cchar=⫻
-syntax match typstMathSymbol 'slash\.big' contained conceal cchar=⧸
-syntax match typstMathSymbol 'dots\.h\.c' contained conceal cchar=⋯
-syntax match typstMathSymbol 'dots\.h' contained conceal cchar=…
-syntax match typstMathSymbol 'dots\.v' contained conceal cchar=⋮
-syntax match typstMathSymbol 'dots\.down' contained conceal cchar=⋱
-syntax match typstMathSymbol 'dots\.up' contained conceal cchar=⋰
-syntax match typstMathSymbol 'tilde\.op' contained conceal cchar=∼
-syntax match typstMathSymbol 'tilde\.basic' contained conceal cchar=~
-syntax match typstMathSymbol 'tilde\.eq' contained conceal cchar=≃
-syntax match typstMathSymbol 'tilde\.eq\.not' contained conceal cchar=≄
-syntax match typstMathSymbol 'tilde\.eq\.rev' contained conceal cchar=⋍
-syntax match typstMathSymbol 'tilde\.equiv' contained conceal cchar=≅
-syntax match typstMathSymbol 'tilde\.equiv\.not' contained conceal cchar=≇
-syntax match typstMathSymbol 'tilde\.nequiv' contained conceal cchar=≆
-syntax match typstMathSymbol 'tilde\.not' contained conceal cchar=≁
-syntax match typstMathSymbol 'tilde\.rev' contained conceal cchar=∽
-syntax match typstMathSymbol 'tilde\.rev\.equiv' contained conceal cchar=≌
-syntax match typstMathSymbol 'tilde\.triple' contained conceal cchar=≋
-syntax match typstMathSymbol 'acute' contained conceal cchar=´
-syntax match typstMathSymbol 'acute\.double' contained conceal cchar=˝
-syntax match typstMathSymbol 'breve' contained conceal cchar=˘
-syntax match typstMathSymbol 'caret' contained conceal cchar=‸
-syntax match typstMathSymbol 'caron' contained conceal cchar=ˇ
-syntax match typstMathSymbol 'hat' contained conceal cchar=^
-syntax match typstMathSymbol 'diaer' contained conceal cchar=¨
-syntax match typstMathSymbol 'grave' contained conceal cchar=`
-syntax match typstMathSymbol 'macron' contained conceal cchar=¯
-syntax match typstMathSymbol 'quote\.double' contained conceal cchar="
-syntax match typstMathSymbol 'quote\.single' contained conceal cchar='
-syntax match typstMathSymbol 'quote\.l\.double' contained conceal cchar=“
-syntax match typstMathSymbol 'quote\.l\.single' contained conceal cchar=‘
-syntax match typstMathSymbol 'quote\.r\.double' contained conceal cchar=”
-syntax match typstMathSymbol 'quote\.r\.single' contained conceal cchar=’
-syntax match typstMathSymbol 'quote\.angle\.l\.double' contained conceal cchar=«
-syntax match typstMathSymbol 'quote\.angle\.l\.single' contained conceal cchar=‹
-syntax match typstMathSymbol 'quote\.angle\.r\.double' contained conceal cchar=»
-syntax match typstMathSymbol 'quote\.angle\.r\.single' contained conceal cchar=›
-syntax match typstMathSymbol 'quote\.high\.double' contained conceal cchar=‟
-syntax match typstMathSymbol 'quote\.high\.single' contained conceal cchar=‛
-syntax match typstMathSymbol 'quote\.low\.double' contained conceal cchar=„
-syntax match typstMathSymbol 'quote\.low\.single' contained conceal cchar=‚
-syntax match typstMathSymbol 'prime' contained conceal cchar=′
-syntax match typstMathSymbol 'prime\.rev' contained conceal cchar=‵
-syntax match typstMathSymbol 'prime\.double' contained conceal cchar=″
-syntax match typstMathSymbol 'prime\.double\.rev' contained conceal cchar=‶
-syntax match typstMathSymbol 'prime\.triple' contained conceal cchar=‴
-syntax match typstMathSymbol 'prime\.triple\.rev' contained conceal cchar=‷
-syntax match typstMathSymbol 'prime\.quad' contained conceal cchar=⁗
-syntax match typstMathSymbol 'plus' contained conceal cchar=+
-syntax match typstMathSymbol 'plus\.circle' contained conceal cchar=⊕
-syntax match typstMathSymbol 'plus\.circle\.arrow' contained conceal cchar=⟴
-syntax match typstMathSymbol 'plus\.circle\.big' contained conceal cchar=⨁
-syntax match typstMathSymbol 'plus\.dot' contained conceal cchar=∔
-syntax match typstMathSymbol 'plus\.minus' contained conceal cchar=±
-syntax match typstMathSymbol 'plus\.small' contained conceal cchar=﹢
-syntax match typstMathSymbol 'plus\.square' contained conceal cchar=⊞
-syntax match typstMathSymbol 'plus\.triangle' contained conceal cchar=⨹
-syntax match typstMathSymbol 'minus' contained conceal cchar=−
-syntax match typstMathSymbol 'minus\.circle' contained conceal cchar=⊖
-syntax match typstMathSymbol 'minus\.dot' contained conceal cchar=∸
-syntax match typstMathSymbol 'minus\.plus' contained conceal cchar=∓
-syntax match typstMathSymbol 'minus\.square' contained conceal cchar=⊟
-syntax match typstMathSymbol 'minus\.tilde' contained conceal cchar=≂
-syntax match typstMathSymbol 'minus\.triangle' contained conceal cchar=⨺
-syntax match typstMathSymbol 'div' contained conceal cchar=÷
-syntax match typstMathSymbol 'div\.circle' contained conceal cchar=⨸
-syntax match typstMathSymbol 'times' contained conceal cchar=×
-syntax match typstMathSymbol 'times\.big' contained conceal cchar=⨉
-syntax match typstMathSymbol 'times\.circle' contained conceal cchar=⊗
-syntax match typstMathSymbol 'times\.circle\.big' contained conceal cchar=⨂
-syntax match typstMathSymbol 'times\.div' contained conceal cchar=⋇
-syntax match typstMathSymbol 'times\.three\.l' contained conceal cchar=⋋
-syntax match typstMathSymbol 'times\.three\.r' contained conceal cchar=⋌
-syntax match typstMathSymbol 'times\.l' contained conceal cchar=⋉
-syntax match typstMathSymbol 'times\.r' contained conceal cchar=⋊
-syntax match typstMathSymbol 'times\.square' contained conceal cchar=⊠
-syntax match typstMathSymbol 'times\.triangle' contained conceal cchar=⨻
-syntax match typstMathSymbol 'ratio' contained conceal cchar=∶
-syntax match typstMathSymbol 'eq' contained conceal cchar==
-syntax match typstMathSymbol 'eq\.star' contained conceal cchar=≛
-syntax match typstMathSymbol 'eq\.circle' contained conceal cchar=⊜
-syntax match typstMathSymbol 'eq\.colon' contained conceal cchar=≕
-syntax match typstMathSymbol 'eq\.def' contained conceal cchar=≝
-syntax match typstMathSymbol 'eq\.delta' contained conceal cchar=≜
-syntax match typstMathSymbol 'eq\.equi' contained conceal cchar=≚
-syntax match typstMathSymbol 'eq\.est' contained conceal cchar=≙
-syntax match typstMathSymbol 'eq\.gt' contained conceal cchar=⋝
-syntax match typstMathSymbol 'eq\.lt' contained conceal cchar=⋜
-syntax match typstMathSymbol 'eq\.m' contained conceal cchar=≞
-syntax match typstMathSymbol 'eq\.not' contained conceal cchar=≠
-syntax match typstMathSymbol 'eq\.prec' contained conceal cchar=⋞
-syntax match typstMathSymbol 'eq\.quest' contained conceal cchar=≟
-syntax match typstMathSymbol 'eq\.small' contained conceal cchar=﹦
-syntax match typstMathSymbol 'eq\.succ' contained conceal cchar=⋟
-syntax match typstMathSymbol 'eq\.triple' contained conceal cchar=≡
-syntax match typstMathSymbol 'eq\.quad' contained conceal cchar=≣
-syntax match typstMathSymbol 'gt' contained conceal cchar=>
-syntax match typstMathSymbol 'gt\.circle' contained conceal cchar=⧁
-syntax match typstMathSymbol 'gt\.curly' contained conceal cchar=≻
-syntax match typstMathSymbol 'gt\.curly\.approx' contained conceal cchar=⪸
-syntax match typstMathSymbol 'gt\.curly\.double' contained conceal cchar=⪼
-syntax match typstMathSymbol 'gt\.curly\.eq' contained conceal cchar=≽
-syntax match typstMathSymbol 'gt\.curly\.eq\.not' contained conceal cchar=⋡
-syntax match typstMathSymbol 'gt\.curly\.equiv' contained conceal cchar=⪴
-syntax match typstMathSymbol 'gt\.curly\.napprox' contained conceal cchar=⪺
-syntax match typstMathSymbol 'gt\.curly\.nequiv' contained conceal cchar=⪶
-syntax match typstMathSymbol 'gt\.curly\.not' contained conceal cchar=⊁
-syntax match typstMathSymbol 'gt\.curly\.ntilde' contained conceal cchar=⋩
-syntax match typstMathSymbol 'gt\.curly\.tilde' contained conceal cchar=≿
-syntax match typstMathSymbol 'gt\.dot' contained conceal cchar=⋗
-syntax match typstMathSymbol 'gt\.double' contained conceal cchar=≫
-syntax match typstMathSymbol 'gt\.eq' contained conceal cchar=≥
-syntax match typstMathSymbol 'gt\.eq\.slant' contained conceal cchar=⩾
-syntax match typstMathSymbol 'gt\.eq\.lt' contained conceal cchar=⋛
-syntax match typstMathSymbol 'gt\.eq\.not' contained conceal cchar=≱
-syntax match typstMathSymbol 'gt\.equiv' contained conceal cchar=≧
-syntax match typstMathSymbol 'gt\.lt' contained conceal cchar=≷
-syntax match typstMathSymbol 'gt\.lt\.not' contained conceal cchar=≹
-syntax match typstMathSymbol 'gt\.nequiv' contained conceal cchar=≩
-syntax match typstMathSymbol 'gt\.not' contained conceal cchar=≯
-syntax match typstMathSymbol 'gt\.ntilde' contained conceal cchar=⋧
-syntax match typstMathSymbol 'gt\.small' contained conceal cchar=﹥
-syntax match typstMathSymbol 'gt\.tilde' contained conceal cchar=≳
-syntax match typstMathSymbol 'gt\.tilde\.not' contained conceal cchar=≵
-syntax match typstMathSymbol 'gt\.tri' contained conceal cchar=⊳
-syntax match typstMathSymbol 'gt\.tri\.eq' contained conceal cchar=⊵
-syntax match typstMathSymbol 'gt\.tri\.eq\.not' contained conceal cchar=⋭
-syntax match typstMathSymbol 'gt\.tri\.not' contained conceal cchar=⋫
-syntax match typstMathSymbol 'gt\.triple' contained conceal cchar=⋙
-syntax match typstMathSymbol 'gt\.triple\.nested' contained conceal cchar=⫸
-syntax match typstMathSymbol 'lt' contained conceal cchar=<
-syntax match typstMathSymbol 'lt\.circle' contained conceal cchar=⧀
-syntax match typstMathSymbol 'lt\.curly' contained conceal cchar=≺
-syntax match typstMathSymbol 'lt\.curly\.approx' contained conceal cchar=⪷
-syntax match typstMathSymbol 'lt\.curly\.double' contained conceal cchar=⪻
-syntax match typstMathSymbol 'lt\.curly\.eq' contained conceal cchar=≼
-syntax match typstMathSymbol 'lt\.curly\.eq\.not' contained conceal cchar=⋠
-syntax match typstMathSymbol 'lt\.curly\.equiv' contained conceal cchar=⪳
-syntax match typstMathSymbol 'lt\.curly\.napprox' contained conceal cchar=⪹
-syntax match typstMathSymbol 'lt\.curly\.nequiv' contained conceal cchar=⪵
-syntax match typstMathSymbol 'lt\.curly\.not' contained conceal cchar=⊀
-syntax match typstMathSymbol 'lt\.curly\.ntilde' contained conceal cchar=⋨
-syntax match typstMathSymbol 'lt\.curly\.tilde' contained conceal cchar=≾
-syntax match typstMathSymbol 'lt\.dot' contained conceal cchar=⋖
-syntax match typstMathSymbol 'lt\.double' contained conceal cchar=≪
-syntax match typstMathSymbol 'lt\.eq' contained conceal cchar=≤
-syntax match typstMathSymbol 'lt\.eq\.slant' contained conceal cchar=⩽
-syntax match typstMathSymbol 'lt\.eq\.gt' contained conceal cchar=⋚
-syntax match typstMathSymbol 'lt\.eq\.not' contained conceal cchar=≰
-syntax match typstMathSymbol 'lt\.equiv' contained conceal cchar=≦
-syntax match typstMathSymbol 'lt\.gt' contained conceal cchar=≶
-syntax match typstMathSymbol 'lt\.gt\.not' contained conceal cchar=≸
-syntax match typstMathSymbol 'lt\.nequiv' contained conceal cchar=≨
-syntax match typstMathSymbol 'lt\.not' contained conceal cchar=≮
-syntax match typstMathSymbol 'lt\.ntilde' contained conceal cchar=⋦
-syntax match typstMathSymbol 'lt\.small' contained conceal cchar=﹤
-syntax match typstMathSymbol 'lt\.tilde' contained conceal cchar=≲
-syntax match typstMathSymbol 'lt\.tilde\.not' contained conceal cchar=≴
-syntax match typstMathSymbol 'lt\.tri' contained conceal cchar=⊲
-syntax match typstMathSymbol 'lt\.tri\.eq' contained conceal cchar=⊴
-syntax match typstMathSymbol 'lt\.tri\.eq\.not' contained conceal cchar=⋬
-syntax match typstMathSymbol 'lt\.tri\.not' contained conceal cchar=⋪
-syntax match typstMathSymbol 'lt\.triple' contained conceal cchar=⋘
-syntax match typstMathSymbol 'lt\.triple\.nested' contained conceal cchar=⫷
-syntax match typstMathSymbol 'approx' contained conceal cchar=≈
-syntax match typstMathSymbol 'approx\.eq' contained conceal cchar=≊
-syntax match typstMathSymbol 'approx\.not' contained conceal cchar=≉
-syntax match typstMathSymbol 'prec' contained conceal cchar=≺
-syntax match typstMathSymbol 'prec\.approx' contained conceal cchar=⪷
-syntax match typstMathSymbol 'prec\.double' contained conceal cchar=⪻
-syntax match typstMathSymbol 'prec\.eq' contained conceal cchar=≼
-syntax match typstMathSymbol 'prec\.eq\.not' contained conceal cchar=⋠
-syntax match typstMathSymbol 'prec\.equiv' contained conceal cchar=⪳
-syntax match typstMathSymbol 'prec\.napprox' contained conceal cchar=⪹
-syntax match typstMathSymbol 'prec\.nequiv' contained conceal cchar=⪵
-syntax match typstMathSymbol 'prec\.not' contained conceal cchar=⊀
-syntax match typstMathSymbol 'prec\.ntilde' contained conceal cchar=⋨
-syntax match typstMathSymbol 'prec\.tilde' contained conceal cchar=≾
-syntax match typstMathSymbol 'succ' contained conceal cchar=≻
-syntax match typstMathSymbol 'succ\.approx' contained conceal cchar=⪸
-syntax match typstMathSymbol 'succ\.double' contained conceal cchar=⪼
-syntax match typstMathSymbol 'succ\.eq' contained conceal cchar=≽
-syntax match typstMathSymbol 'succ\.eq\.not' contained conceal cchar=⋡
-syntax match typstMathSymbol 'succ\.equiv' contained conceal cchar=⪴
-syntax match typstMathSymbol 'succ\.napprox' contained conceal cchar=⪺
-syntax match typstMathSymbol 'succ\.nequiv' contained conceal cchar=⪶
-syntax match typstMathSymbol 'succ\.not' contained conceal cchar=⊁
-syntax match typstMathSymbol 'succ\.ntilde' contained conceal cchar=⋩
-syntax match typstMathSymbol 'succ\.tilde' contained conceal cchar=≿
-syntax match typstMathSymbol 'equiv' contained conceal cchar=≡
-syntax match typstMathSymbol 'equiv\.not' contained conceal cchar=≢
-syntax match typstMathSymbol 'prop' contained conceal cchar=∝
-syntax match typstMathSymbol 'emptyset' contained conceal cchar=∅
-syntax match typstMathSymbol 'emptyset\.rev' contained conceal cchar=⦰
-syntax match typstMathSymbol 'nothing' contained conceal cchar=∅
-syntax match typstMathSymbol 'nothing\.rev' contained conceal cchar=⦰
-syntax match typstMathSymbol 'without' contained conceal cchar=∖
-syntax match typstMathSymbol 'complement' contained conceal cchar=∁
-syntax match typstMathSymbol 'in' contained conceal cchar=∈
-syntax match typstMathSymbol 'in\.not' contained conceal cchar=∉
-syntax match typstMathSymbol 'in\.rev' contained conceal cchar=∋
-syntax match typstMathSymbol 'in\.rev\.not' contained conceal cchar=∌
-syntax match typstMathSymbol 'in\.rev\.small' contained conceal cchar=∍
-syntax match typstMathSymbol 'in\.small' contained conceal cchar=∊
-syntax match typstMathSymbol 'subset' contained conceal cchar=⊂
-syntax match typstMathSymbol 'subset\.dot' contained conceal cchar=⪽
-syntax match typstMathSymbol 'subset\.double' contained conceal cchar=⋐
-syntax match typstMathSymbol 'subset\.eq' contained conceal cchar=⊆
-syntax match typstMathSymbol 'subset\.eq\.not' contained conceal cchar=⊈
-syntax match typstMathSymbol 'subset\.eq\.sq' contained conceal cchar=⊑
-syntax match typstMathSymbol 'subset\.eq\.sq\.not' contained conceal cchar=⋢
-syntax match typstMathSymbol 'subset\.neq' contained conceal cchar=⊊
-syntax match typstMathSymbol 'subset\.not' contained conceal cchar=⊄
-syntax match typstMathSymbol 'subset\.sq' contained conceal cchar=⊏
-syntax match typstMathSymbol 'subset\.sq\.neq' contained conceal cchar=⋤
-syntax match typstMathSymbol 'supset' contained conceal cchar=⊃
-syntax match typstMathSymbol 'supset\.dot' contained conceal cchar=⪾
-syntax match typstMathSymbol 'supset\.double' contained conceal cchar=⋑
-syntax match typstMathSymbol 'supset\.eq' contained conceal cchar=⊇
-syntax match typstMathSymbol 'supset\.eq\.not' contained conceal cchar=⊉
-syntax match typstMathSymbol 'supset\.eq\.sq' contained conceal cchar=⊒
-syntax match typstMathSymbol 'supset\.eq\.sq\.not' contained conceal cchar=⋣
-syntax match typstMathSymbol 'supset\.neq' contained conceal cchar=⊋
-syntax match typstMathSymbol 'supset\.not' contained conceal cchar=⊅
-syntax match typstMathSymbol 'supset\.sq' contained conceal cchar=⊐
-syntax match typstMathSymbol 'supset\.sq\.neq' contained conceal cchar=⋥
-syntax match typstMathSymbol 'union' contained conceal cchar=∪
-syntax match typstMathSymbol 'union\.arrow' contained conceal cchar=⊌
-syntax match typstMathSymbol 'union\.big' contained conceal cchar=⋃
-syntax match typstMathSymbol 'union\.dot' contained conceal cchar=⊍
-syntax match typstMathSymbol 'union\.dot\.big' contained conceal cchar=⨃
-syntax match typstMathSymbol 'union\.double' contained conceal cchar=⋓
-syntax match typstMathSymbol 'union\.minus' contained conceal cchar=⩁
-syntax match typstMathSymbol 'union\.or' contained conceal cchar=⩅
-syntax match typstMathSymbol 'union\.plus' contained conceal cchar=⊎
-syntax match typstMathSymbol 'union\.plus\.big' contained conceal cchar=⨄
-syntax match typstMathSymbol 'union\.sq' contained conceal cchar=⊔
-syntax match typstMathSymbol 'union\.sq\.big' contained conceal cchar=⨆
-syntax match typstMathSymbol 'union\.sq\.double' contained conceal cchar=⩏
-syntax match typstMathSymbol 'sect' contained conceal cchar=∩
-syntax match typstMathSymbol 'sect\.and' contained conceal cchar=⩄
-syntax match typstMathSymbol 'sect\.big' contained conceal cchar=⋂
-syntax match typstMathSymbol 'sect\.dot' contained conceal cchar=⩀
-syntax match typstMathSymbol 'sect\.double' contained conceal cchar=⋒
-syntax match typstMathSymbol 'sect\.sq' contained conceal cchar=⊓
-syntax match typstMathSymbol 'sect\.sq\.big' contained conceal cchar=⨅
-syntax match typstMathSymbol 'sect\.sq\.double' contained conceal cchar=⩎
-syntax match typstMathSymbol 'infinity' contained conceal cchar=∞
-syntax match typstMathSymbol 'oo' contained conceal cchar=∞
-syntax match typstMathSymbol 'diff' contained conceal cchar=∂
-syntax match typstMathSymbol 'nabla' contained conceal cchar=∇
-syntax match typstMathSymbol 'sum' contained conceal cchar=∑
-syntax match typstMathSymbol 'sum\.integral' contained conceal cchar=⨋
-syntax match typstMathSymbol 'product' contained conceal cchar=∏
-syntax match typstMathSymbol 'product\.co' contained conceal cchar=∐
-syntax match typstMathSymbol 'integral' contained conceal cchar=∫
-syntax match typstMathSymbol 'integral\.arrow\.hook' contained conceal cchar=⨗
-syntax match typstMathSymbol 'integral\.ccw' contained conceal cchar=⨑
-syntax match typstMathSymbol 'integral\.cont' contained conceal cchar=∮
-syntax match typstMathSymbol 'integral\.cont\.ccw' contained conceal cchar=∳
-syntax match typstMathSymbol 'integral\.cont\.cw' contained conceal cchar=∲
-syntax match typstMathSymbol 'integral\.cw' contained conceal cchar=∱
-syntax match typstMathSymbol 'integral\.double' contained conceal cchar=∬
-syntax match typstMathSymbol 'integral\.quad' contained conceal cchar=⨌
-syntax match typstMathSymbol 'integral\.sect' contained conceal cchar=⨙
-syntax match typstMathSymbol 'integral\.square' contained conceal cchar=⨖
-syntax match typstMathSymbol 'integral\.surf' contained conceal cchar=∯
-syntax match typstMathSymbol 'integral\.times' contained conceal cchar=⨘
-syntax match typstMathSymbol 'integral\.triple' contained conceal cchar=∭
-syntax match typstMathSymbol 'integral\.union' contained conceal cchar=⨚
-syntax match typstMathSymbol 'integral\.vol' contained conceal cchar=∰
-syntax match typstMathSymbol 'laplace' contained conceal cchar=∆
-syntax match typstMathSymbol 'forall' contained conceal cchar=∀
-syntax match typstMathSymbol 'exists' contained conceal cchar=∃
-syntax match typstMathSymbol 'exists\.not' contained conceal cchar=∄
-syntax match typstMathSymbol 'top' contained conceal cchar=⊤
-syntax match typstMathSymbol 'bot' contained conceal cchar=⊥
-syntax match typstMathSymbol 'not' contained conceal cchar=¬
-syntax match typstMathSymbol 'and' contained conceal cchar=∧
-syntax match typstMathSymbol 'and\.big' contained conceal cchar=⋀
-syntax match typstMathSymbol 'and\.curly' contained conceal cchar=⋏
-syntax match typstMathSymbol 'and\.dot' contained conceal cchar=⟑
-syntax match typstMathSymbol 'and\.double' contained conceal cchar=⩓
-syntax match typstMathSymbol 'or' contained conceal cchar=∨
-syntax match typstMathSymbol 'or\.big' contained conceal cchar=⋁
-syntax match typstMathSymbol 'or\.curly' contained conceal cchar=⋎
-syntax match typstMathSymbol 'or\.dot' contained conceal cchar=⟇
-syntax match typstMathSymbol 'or\.double' contained conceal cchar=⩔
-syntax match typstMathSymbol 'xor' contained conceal cchar=⊕
-syntax match typstMathSymbol 'xor\.big' contained conceal cchar=⨁
-syntax match typstMathSymbol 'models' contained conceal cchar=⊧
-syntax match typstMathSymbol 'therefore' contained conceal cchar=∴
-syntax match typstMathSymbol 'because' contained conceal cchar=∵
-syntax match typstMathSymbol 'qed' contained conceal cchar=∎
-syntax match typstMathSymbol 'compose' contained conceal cchar=∘
-syntax match typstMathSymbol 'convolve' contained conceal cchar=∗
-syntax match typstMathSymbol 'multimap' contained conceal cchar=⊸
-syntax match typstMathSymbol 'divides' contained conceal cchar=∣
-syntax match typstMathSymbol 'divides\.not' contained conceal cchar=∤
-syntax match typstMathSymbol 'wreath' contained conceal cchar=≀
-syntax match typstMathSymbol 'parallel' contained conceal cchar=∥
-syntax match typstMathSymbol 'parallel\.circle' contained conceal cchar=⦷
-syntax match typstMathSymbol 'parallel\.not' contained conceal cchar=∦
-syntax match typstMathSymbol 'perp' contained conceal cchar=⟂
-syntax match typstMathSymbol 'perp\.circle' contained conceal cchar=⦹
-syntax match typstMathSymbol 'diameter' contained conceal cchar=⌀
-syntax match typstMathSymbol 'join' contained conceal cchar=⨝
-syntax match typstMathSymbol 'join\.r' contained conceal cchar=⟖
-syntax match typstMathSymbol 'join\.l' contained conceal cchar=⟕
-syntax match typstMathSymbol 'join\.l\.r' contained conceal cchar=⟗
-syntax match typstMathSymbol 'degree' contained conceal cchar=°
-syntax match typstMathSymbol 'degree\.c' contained conceal cchar=℃
-syntax match typstMathSymbol 'degree\.f' contained conceal cchar=℉
-syntax match typstMathSymbol 'smash' contained conceal cchar=⨳
-syntax match typstMathSymbol 'bitcoin' contained conceal cchar=₿
-syntax match typstMathSymbol 'dollar' contained conceal cchar=$
-syntax match typstMathSymbol 'euro' contained conceal cchar=€
-syntax match typstMathSymbol 'franc' contained conceal cchar=₣
-syntax match typstMathSymbol 'lira' contained conceal cchar=₺
-syntax match typstMathSymbol 'peso' contained conceal cchar=₱
-syntax match typstMathSymbol 'pound' contained conceal cchar=£
-syntax match typstMathSymbol 'ruble' contained conceal cchar=₽
-syntax match typstMathSymbol 'rupee' contained conceal cchar=₹
-syntax match typstMathSymbol 'won' contained conceal cchar=₩
-syntax match typstMathSymbol 'yen' contained conceal cchar=¥
-syntax match typstMathSymbol 'ballot' contained conceal cchar=☐
-syntax match typstMathSymbol 'ballot\.x' contained conceal cchar=☒
-syntax match typstMathSymbol 'checkmark' contained conceal cchar=✓
-syntax match typstMathSymbol 'checkmark\.light' contained conceal cchar=🗸
-syntax match typstMathSymbol 'floral' contained conceal cchar=❦
-syntax match typstMathSymbol 'floral\.l' contained conceal cchar=☙
-syntax match typstMathSymbol 'floral\.r' contained conceal cchar=❧
-syntax match typstMathSymbol 'notes\.up' contained conceal cchar=🎜
-syntax match typstMathSymbol 'notes\.down' contained conceal cchar=🎝
-syntax match typstMathSymbol 'refmark' contained conceal cchar=※
-syntax match typstMathSymbol 'servicemark' contained conceal cchar=℠
-syntax match typstMathSymbol 'maltese' contained conceal cchar=✠
-syntax match typstMathSymbol 'suit\.club' contained conceal cchar=♣
-syntax match typstMathSymbol 'suit\.diamond' contained conceal cchar=♦
-syntax match typstMathSymbol 'suit\.heart' contained conceal cchar=♥
-syntax match typstMathSymbol 'suit\.spade' contained conceal cchar=♠
-syntax match typstMathSymbol 'bullet' contained conceal cchar=•
-syntax match typstMathSymbol 'circle\.stroked' contained conceal cchar=○
-syntax match typstMathSymbol 'circle\.stroked\.tiny' contained conceal cchar=∘
-syntax match typstMathSymbol 'circle\.stroked\.small' contained conceal cchar=⚬
-syntax match typstMathSymbol 'circle\.stroked\.big' contained conceal cchar=◯
-syntax match typstMathSymbol 'circle\.filled' contained conceal cchar=●
-syntax match typstMathSymbol 'circle\.filled\.tiny' contained conceal cchar=⦁
-syntax match typstMathSymbol 'circle\.filled\.small' contained conceal cchar=∙
-syntax match typstMathSymbol 'circle\.filled\.big' contained conceal cchar=⬤
-syntax match typstMathSymbol 'circle\.dotted' contained conceal cchar=◌
-syntax match typstMathSymbol 'circle\.nested' contained conceal cchar=⊚
-syntax match typstMathSymbol 'ellipse\.stroked\.h' contained conceal cchar=⬭
-syntax match typstMathSymbol 'ellipse\.stroked\.v' contained conceal cchar=⬯
-syntax match typstMathSymbol 'ellipse\.filled\.h' contained conceal cchar=⬬
-syntax match typstMathSymbol 'ellipse\.filled\.v' contained conceal cchar=⬮
-syntax match typstMathSymbol 'triangle\.stroked\.r' contained conceal cchar=▷
-syntax match typstMathSymbol 'triangle\.stroked\.l' contained conceal cchar=◁
-syntax match typstMathSymbol 'triangle\.stroked\.t' contained conceal cchar=△
-syntax match typstMathSymbol 'triangle\.stroked\.b' contained conceal cchar=▽
-syntax match typstMathSymbol 'triangle\.stroked\.bl' contained conceal cchar=◺
-syntax match typstMathSymbol 'triangle\.stroked\.br' contained conceal cchar=◿
-syntax match typstMathSymbol 'triangle\.stroked\.tl' contained conceal cchar=◸
-syntax match typstMathSymbol 'triangle\.stroked\.tr' contained conceal cchar=◹
-syntax match typstMathSymbol 'triangle\.stroked\.small\.r' contained conceal cchar=▹
-syntax match typstMathSymbol 'triangle\.stroked\.small\.b' contained conceal cchar=▿
-syntax match typstMathSymbol 'triangle\.stroked\.small\.l' contained conceal cchar=◃
-syntax match typstMathSymbol 'triangle\.stroked\.small\.t' contained conceal cchar=▵
-syntax match typstMathSymbol 'triangle\.stroked\.rounded' contained conceal cchar=🛆
-syntax match typstMathSymbol 'triangle\.stroked\.nested' contained conceal cchar=⟁
-syntax match typstMathSymbol 'triangle\.stroked\.dot' contained conceal cchar=◬
-syntax match typstMathSymbol 'triangle\.filled\.r' contained conceal cchar=▶
-syntax match typstMathSymbol 'triangle\.filled\.l' contained conceal cchar=◀
-syntax match typstMathSymbol 'triangle\.filled\.t' contained conceal cchar=▲
-syntax match typstMathSymbol 'triangle\.filled\.b' contained conceal cchar=▼
-syntax match typstMathSymbol 'triangle\.filled\.bl' contained conceal cchar=◣
-syntax match typstMathSymbol 'triangle\.filled\.br' contained conceal cchar=◢
-syntax match typstMathSymbol 'triangle\.filled\.tl' contained conceal cchar=◤
-syntax match typstMathSymbol 'triangle\.filled\.tr' contained conceal cchar=◥
-syntax match typstMathSymbol 'triangle\.filled\.small\.r' contained conceal cchar=▸
-syntax match typstMathSymbol 'triangle\.filled\.small\.b' contained conceal cchar=▾
-syntax match typstMathSymbol 'triangle\.filled\.small\.l' contained conceal cchar=◂
-syntax match typstMathSymbol 'triangle\.filled\.small\.t' contained conceal cchar=▴
-syntax match typstMathSymbol 'square\.stroked' contained conceal cchar=□
-syntax match typstMathSymbol 'square\.stroked\.tiny' contained conceal cchar=▫
-syntax match typstMathSymbol 'square\.stroked\.small' contained conceal cchar=◽
-syntax match typstMathSymbol 'square\.stroked\.medium' contained conceal cchar=◻
-syntax match typstMathSymbol 'square\.stroked\.big' contained conceal cchar=⬜
-syntax match typstMathSymbol 'square\.stroked\.dotted' contained conceal cchar=⬚
-syntax match typstMathSymbol 'square\.stroked\.rounded' contained conceal cchar=▢
-syntax match typstMathSymbol 'square\.filled' contained conceal cchar=■
-syntax match typstMathSymbol 'square\.filled\.tiny' contained conceal cchar=▪
-syntax match typstMathSymbol 'square\.filled\.small' contained conceal cchar=◾
-syntax match typstMathSymbol 'square\.filled\.medium' contained conceal cchar=◼
-syntax match typstMathSymbol 'square\.filled\.big' contained conceal cchar=⬛
-syntax match typstMathSymbol 'rect\.stroked\.h' contained conceal cchar=▭
-syntax match typstMathSymbol 'rect\.stroked\.v' contained conceal cchar=▯
-syntax match typstMathSymbol 'rect\.filled\.h' contained conceal cchar=▬
-syntax match typstMathSymbol 'rect\.filled\.v' contained conceal cchar=▮
-syntax match typstMathSymbol 'penta\.stroked' contained conceal cchar=⬠
-syntax match typstMathSymbol 'penta\.filled' contained conceal cchar=⬟
-syntax match typstMathSymbol 'hexa\.stroked' contained conceal cchar=⬡
-syntax match typstMathSymbol 'hexa\.filled' contained conceal cchar=⬢
-syntax match typstMathSymbol 'diamond\.stroked' contained conceal cchar=◇
-syntax match typstMathSymbol 'diamond\.stroked\.small' contained conceal cchar=⋄
-syntax match typstMathSymbol 'diamond\.stroked\.medium' contained conceal cchar=⬦
-syntax match typstMathSymbol 'diamond\.stroked\.dot' contained conceal cchar=⟐
-syntax match typstMathSymbol 'diamond\.filled' contained conceal cchar=◆
-syntax match typstMathSymbol 'diamond\.filled\.medium' contained conceal cchar=⬥
-syntax match typstMathSymbol 'diamond\.filled\.small' contained conceal cchar=⬩
-syntax match typstMathSymbol 'lozenge\.stroked' contained conceal cchar=◊
-syntax match typstMathSymbol 'lozenge\.stroked\.small' contained conceal cchar=⬫
-syntax match typstMathSymbol 'lozenge\.stroked\.medium' contained conceal cchar=⬨
-syntax match typstMathSymbol 'lozenge\.filled' contained conceal cchar=⧫
-syntax match typstMathSymbol 'lozenge\.filled\.small' contained conceal cchar=⬪
-syntax match typstMathSymbol 'lozenge\.filled\.medium' contained conceal cchar=⬧
-syntax match typstMathSymbol 'star\.op' contained conceal cchar=⋆
-syntax match typstMathSymbol 'star\.stroked' contained conceal cchar=★
-syntax match typstMathSymbol 'star\.filled' contained conceal cchar=★
-syntax match typstMathSymbol 'arrow\.r' contained conceal cchar=→
-syntax match typstMathSymbol 'arrow\.r\.long\.bar' contained conceal cchar=⟼
-syntax match typstMathSymbol 'arrow\.r\.bar' contained conceal cchar=↦
-syntax match typstMathSymbol 'arrow\.r\.curve' contained conceal cchar=⤷
-syntax match typstMathSymbol 'arrow\.r\.dashed' contained conceal cchar=⇢
-syntax match typstMathSymbol 'arrow\.r\.dotted' contained conceal cchar=⤑
-syntax match typstMathSymbol 'arrow\.r\.double' contained conceal cchar=⇒
-syntax match typstMathSymbol 'arrow\.r\.double\.bar' contained conceal cchar=⤇
-syntax match typstMathSymbol 'arrow\.r\.double\.long' contained conceal cchar=⟹
-syntax match typstMathSymbol 'arrow\.r\.double\.long\.bar' contained conceal cchar=⟾
-syntax match typstMathSymbol 'arrow\.r\.double\.not' contained conceal cchar=⇏
-syntax match typstMathSymbol 'arrow\.r\.filled' contained conceal cchar=➡
-syntax match typstMathSymbol 'arrow\.r\.hook' contained conceal cchar=↪
-syntax match typstMathSymbol 'arrow\.r\.long' contained conceal cchar=⟶
-syntax match typstMathSymbol 'arrow\.r\.long\.squiggly' contained conceal cchar=⟿
-syntax match typstMathSymbol 'arrow\.r\.loop' contained conceal cchar=↬
-syntax match typstMathSymbol 'arrow\.r\.not' contained conceal cchar=↛
-syntax match typstMathSymbol 'arrow\.r\.quad' contained conceal cchar=⭆
-syntax match typstMathSymbol 'arrow\.r\.squiggly' contained conceal cchar=⇝
-syntax match typstMathSymbol 'arrow\.r\.stop' contained conceal cchar=⇥
-syntax match typstMathSymbol 'arrow\.r\.stroked' contained conceal cchar=⇨
-syntax match typstMathSymbol 'arrow\.r\.tail' contained conceal cchar=↣
-syntax match typstMathSymbol 'arrow\.r\.triple' contained conceal cchar=⇛
-syntax match typstMathSymbol 'arrow\.r\.twohead\.bar' contained conceal cchar=⤅
-syntax match typstMathSymbol 'arrow\.r\.twohead' contained conceal cchar=↠
-syntax match typstMathSymbol 'arrow\.r\.wave' contained conceal cchar=↝
-syntax match typstMathSymbol 'arrow\.l' contained conceal cchar=←
-syntax match typstMathSymbol 'arrow\.l\.bar' contained conceal cchar=↤
-syntax match typstMathSymbol 'arrow\.l\.curve' contained conceal cchar=⤶
-syntax match typstMathSymbol 'arrow\.l\.dashed' contained conceal cchar=⇠
-syntax match typstMathSymbol 'arrow\.l\.dotted' contained conceal cchar=⬸
-syntax match typstMathSymbol 'arrow\.l\.double' contained conceal cchar=⇐
-syntax match typstMathSymbol 'arrow\.l\.double\.bar' contained conceal cchar=⤆
-syntax match typstMathSymbol 'arrow\.l\.double\.long' contained conceal cchar=⟸
-syntax match typstMathSymbol 'arrow\.l\.double\.long\.bar' contained conceal cchar=⟽
-syntax match typstMathSymbol 'arrow\.l\.double\.not' contained conceal cchar=⇍
-syntax match typstMathSymbol 'arrow\.l\.filled' contained conceal cchar=⬅
-syntax match typstMathSymbol 'arrow\.l\.hook' contained conceal cchar=↩
-syntax match typstMathSymbol 'arrow\.l\.long' contained conceal cchar=⟵
-syntax match typstMathSymbol 'arrow\.l\.long\.bar' contained conceal cchar=⟻
-syntax match typstMathSymbol 'arrow\.l\.long\.squiggly' contained conceal cchar=⬳
-syntax match typstMathSymbol 'arrow\.l\.loop' contained conceal cchar=↫
-syntax match typstMathSymbol 'arrow\.l\.not' contained conceal cchar=↚
-syntax match typstMathSymbol 'arrow\.l\.quad' contained conceal cchar=⭅
-syntax match typstMathSymbol 'arrow\.l\.squiggly' contained conceal cchar=⇜
-syntax match typstMathSymbol 'arrow\.l\.stop' contained conceal cchar=⇤
-syntax match typstMathSymbol 'arrow\.l\.stroked' contained conceal cchar=⇦
-syntax match typstMathSymbol 'arrow\.l\.tail' contained conceal cchar=↢
-syntax match typstMathSymbol 'arrow\.l\.triple' contained conceal cchar=⇚
-syntax match typstMathSymbol 'arrow\.l\.twohead\.bar' contained conceal cchar=⬶
-syntax match typstMathSymbol 'arrow\.l\.twohead' contained conceal cchar=↞
-syntax match typstMathSymbol 'arrow\.l\.wave' contained conceal cchar=↜
-syntax match typstMathSymbol 'arrow\.t' contained conceal cchar=↑
-syntax match typstMathSymbol 'arrow\.t\.bar' contained conceal cchar=↥
-syntax match typstMathSymbol 'arrow\.t\.curve' contained conceal cchar=⤴
-syntax match typstMathSymbol 'arrow\.t\.dashed' contained conceal cchar=⇡
-syntax match typstMathSymbol 'arrow\.t\.double' contained conceal cchar=⇑
-syntax match typstMathSymbol 'arrow\.t\.filled' contained conceal cchar=⬆
-syntax match typstMathSymbol 'arrow\.t\.quad' contained conceal cchar=⟰
-syntax match typstMathSymbol 'arrow\.t\.stop' contained conceal cchar=⤒
-syntax match typstMathSymbol 'arrow\.t\.stroked' contained conceal cchar=⇧
-syntax match typstMathSymbol 'arrow\.t\.triple' contained conceal cchar=⤊
-syntax match typstMathSymbol 'arrow\.t\.twohead' contained conceal cchar=↟
-syntax match typstMathSymbol 'arrow\.b' contained conceal cchar=↓
-syntax match typstMathSymbol 'arrow\.b\.bar' contained conceal cchar=↧
-syntax match typstMathSymbol 'arrow\.b\.curve' contained conceal cchar=⤵
-syntax match typstMathSymbol 'arrow\.b\.dashed' contained conceal cchar=⇣
-syntax match typstMathSymbol 'arrow\.b\.double' contained conceal cchar=⇓
-syntax match typstMathSymbol 'arrow\.b\.filled' contained conceal cchar=⬇
-syntax match typstMathSymbol 'arrow\.b\.quad' contained conceal cchar=⟱
-syntax match typstMathSymbol 'arrow\.b\.stop' contained conceal cchar=⤓
-syntax match typstMathSymbol 'arrow\.b\.stroked' contained conceal cchar=⇩
-syntax match typstMathSymbol 'arrow\.b\.triple' contained conceal cchar=⤋
-syntax match typstMathSymbol 'arrow\.b\.twohead' contained conceal cchar=↡
-syntax match typstMathSymbol 'arrow\.l\.r' contained conceal cchar=↔
-syntax match typstMathSymbol 'arrow\.l\.r\.double' contained conceal cchar=⇔
-syntax match typstMathSymbol 'arrow\.l\.r\.double\.long' contained conceal cchar=⟺
-syntax match typstMathSymbol 'arrow\.l\.r\.double\.not' contained conceal cchar=⇎
-syntax match typstMathSymbol 'arrow\.l\.r\.filled' contained conceal cchar=⬌
-syntax match typstMathSymbol 'arrow\.l\.r\.long' contained conceal cchar=⟷
-syntax match typstMathSymbol 'arrow\.l\.r\.not' contained conceal cchar=↮
-syntax match typstMathSymbol 'arrow\.l\.r\.stroked' contained conceal cchar=⬄
-syntax match typstMathSymbol 'arrow\.l\.r\.wave' contained conceal cchar=↭
-syntax match typstMathSymbol 'arrow\.t\.b' contained conceal cchar=↕
-syntax match typstMathSymbol 'arrow\.t\.b\.double' contained conceal cchar=⇕
-syntax match typstMathSymbol 'arrow\.t\.b\.filled' contained conceal cchar=⬍
-syntax match typstMathSymbol 'arrow\.t\.b\.stroked' contained conceal cchar=⇳
-syntax match typstMathSymbol 'arrow\.tr' contained conceal cchar=↗
-syntax match typstMathSymbol 'arrow\.tr\.double' contained conceal cchar=⇗
-syntax match typstMathSymbol 'arrow\.tr\.filled' contained conceal cchar=⬈
-syntax match typstMathSymbol 'arrow\.tr\.hook' contained conceal cchar=⤤
-syntax match typstMathSymbol 'arrow\.tr\.stroked' contained conceal cchar=⬀
-syntax match typstMathSymbol 'arrow\.br' contained conceal cchar=↘
-syntax match typstMathSymbol 'arrow\.br\.double' contained conceal cchar=⇘
-syntax match typstMathSymbol 'arrow\.br\.filled' contained conceal cchar=⬊
-syntax match typstMathSymbol 'arrow\.br\.hook' contained conceal cchar=⤥
-syntax match typstMathSymbol 'arrow\.br\.stroked' contained conceal cchar=⬂
-syntax match typstMathSymbol 'arrow\.tl' contained conceal cchar=↖
-syntax match typstMathSymbol 'arrow\.tl\.double' contained conceal cchar=⇖
-syntax match typstMathSymbol 'arrow\.tl\.filled' contained conceal cchar=⬉
-syntax match typstMathSymbol 'arrow\.tl\.hook' contained conceal cchar=⤣
-syntax match typstMathSymbol 'arrow\.tl\.stroked' contained conceal cchar=⬁
-syntax match typstMathSymbol 'arrow\.bl' contained conceal cchar=↙
-syntax match typstMathSymbol 'arrow\.bl\.double' contained conceal cchar=⇙
-syntax match typstMathSymbol 'arrow\.bl\.filled' contained conceal cchar=⬋
-syntax match typstMathSymbol 'arrow\.bl\.hook' contained conceal cchar=⤦
-syntax match typstMathSymbol 'arrow\.bl\.stroked' contained conceal cchar=⬃
-syntax match typstMathSymbol 'arrow\.tl\.br' contained conceal cchar=⤡
-syntax match typstMathSymbol 'arrow\.tr\.bl' contained conceal cchar=⤢
-syntax match typstMathSymbol 'arrow\.ccw' contained conceal cchar=↺
-syntax match typstMathSymbol 'arrow\.ccw\.half' contained conceal cchar=↶
-syntax match typstMathSymbol 'arrow\.cw' contained conceal cchar=↻
-syntax match typstMathSymbol 'arrow\.cw\.half' contained conceal cchar=↷
-syntax match typstMathSymbol 'arrow\.zigzag' contained conceal cchar=↯
-syntax match typstMathSymbol 'arrows\.rr' contained conceal cchar=⇉
-syntax match typstMathSymbol 'arrows\.ll' contained conceal cchar=⇇
-syntax match typstMathSymbol 'arrows\.tt' contained conceal cchar=⇈
-syntax match typstMathSymbol 'arrows\.bb' contained conceal cchar=⇊
-syntax match typstMathSymbol 'arrows\.lr' contained conceal cchar=⇆
-syntax match typstMathSymbol 'arrows\.lr\.stop' contained conceal cchar=↹
-syntax match typstMathSymbol 'arrows\.rl' contained conceal cchar=⇄
-syntax match typstMathSymbol 'arrows\.tb' contained conceal cchar=⇅
-syntax match typstMathSymbol 'arrows\.bt' contained conceal cchar=⇵
-syntax match typstMathSymbol 'arrows\.rrr' contained conceal cchar=⇶
-syntax match typstMathSymbol 'arrows\.lll' contained conceal cchar=⬱
-syntax match typstMathSymbol 'arrowhead\.t' contained conceal cchar=⌃
-syntax match typstMathSymbol 'arrowhead\.b' contained conceal cchar=⌄
-syntax match typstMathSymbol 'harpoon\.rt' contained conceal cchar=⇀
-syntax match typstMathSymbol 'harpoon\.rt\.bar' contained conceal cchar=⥛
-syntax match typstMathSymbol 'harpoon\.rt\.stop' contained conceal cchar=⥓
-syntax match typstMathSymbol 'harpoon\.rb' contained conceal cchar=⇁
-syntax match typstMathSymbol 'harpoon\.rb\.bar' contained conceal cchar=⥟
-syntax match typstMathSymbol 'harpoon\.rb\.stop' contained conceal cchar=⥗
-syntax match typstMathSymbol 'harpoon\.lt' contained conceal cchar=↼
-syntax match typstMathSymbol 'harpoon\.lt\.bar' contained conceal cchar=⥚
-syntax match typstMathSymbol 'harpoon\.lt\.stop' contained conceal cchar=⥒
-syntax match typstMathSymbol 'harpoon\.lb' contained conceal cchar=↽
-syntax match typstMathSymbol 'harpoon\.lb\.bar' contained conceal cchar=⥞
-syntax match typstMathSymbol 'harpoon\.lb\.stop' contained conceal cchar=⥖
-syntax match typstMathSymbol 'harpoon\.tl' contained conceal cchar=↿
-syntax match typstMathSymbol 'harpoon\.tl\.bar' contained conceal cchar=⥠
-syntax match typstMathSymbol 'harpoon\.tl\.stop' contained conceal cchar=⥘
-syntax match typstMathSymbol 'harpoon\.tr' contained conceal cchar=↾
-syntax match typstMathSymbol 'harpoon\.tr\.bar' contained conceal cchar=⥜
-syntax match typstMathSymbol 'harpoon\.tr\.stop' contained conceal cchar=⥔
-syntax match typstMathSymbol 'harpoon\.bl' contained conceal cchar=⇃
-syntax match typstMathSymbol 'harpoon\.bl\.bar' contained conceal cchar=⥡
-syntax match typstMathSymbol 'harpoon\.bl\.stop' contained conceal cchar=⥙
-syntax match typstMathSymbol 'harpoon\.br' contained conceal cchar=⇂
-syntax match typstMathSymbol 'harpoon\.br\.bar' contained conceal cchar=⥝
-syntax match typstMathSymbol 'harpoon\.br\.stop' contained conceal cchar=⥕
-syntax match typstMathSymbol 'harpoon\.lt\.rt' contained conceal cchar=⥎
-syntax match typstMathSymbol 'harpoon\.lb\.rb' contained conceal cchar=⥐
-syntax match typstMathSymbol 'harpoon\.lb\.rt' contained conceal cchar=⥋
-syntax match typstMathSymbol 'harpoon\.lt\.rb' contained conceal cchar=⥊
-syntax match typstMathSymbol 'harpoon\.tl\.bl' contained conceal cchar=⥑
-syntax match typstMathSymbol 'harpoon\.tr\.br' contained conceal cchar=⥏
-syntax match typstMathSymbol 'harpoon\.tl\.br' contained conceal cchar=⥍
-syntax match typstMathSymbol 'harpoon\.tr\.bl' contained conceal cchar=⥌
-syntax match typstMathSymbol 'harpoons\.rtrb' contained conceal cchar=⥤
-syntax match typstMathSymbol 'harpoons\.blbr' contained conceal cchar=⥥
-syntax match typstMathSymbol 'harpoons\.bltr' contained conceal cchar=⥯
-syntax match typstMathSymbol 'harpoons\.lbrb' contained conceal cchar=⥧
-syntax match typstMathSymbol 'harpoons\.ltlb' contained conceal cchar=⥢
-syntax match typstMathSymbol 'harpoons\.ltrb' contained conceal cchar=⇋
-syntax match typstMathSymbol 'harpoons\.ltrt' contained conceal cchar=⥦
-syntax match typstMathSymbol 'harpoons\.rblb' contained conceal cchar=⥩
-syntax match typstMathSymbol 'harpoons\.rtlb' contained conceal cchar=⇌
-syntax match typstMathSymbol 'harpoons\.rtlt' contained conceal cchar=⥨
-syntax match typstMathSymbol 'harpoons\.tlbr' contained conceal cchar=⥮
-syntax match typstMathSymbol 'harpoons\.tltr' contained conceal cchar=⥣
-syntax match typstMathSymbol 'tack\.r' contained conceal cchar=⊢
-syntax match typstMathSymbol 'tack\.r\.not' contained conceal cchar=⊬
-syntax match typstMathSymbol 'tack\.r\.long' contained conceal cchar=⟝
-syntax match typstMathSymbol 'tack\.r\.short' contained conceal cchar=⊦
-syntax match typstMathSymbol 'tack\.r\.double' contained conceal cchar=⊨
-syntax match typstMathSymbol 'tack\.r\.double\.not' contained conceal cchar=⊭
-syntax match typstMathSymbol 'tack\.l' contained conceal cchar=⊣
-syntax match typstMathSymbol 'tack\.l\.long' contained conceal cchar=⟞
-syntax match typstMathSymbol 'tack\.l\.short' contained conceal cchar=⫞
-syntax match typstMathSymbol 'tack\.l\.double' contained conceal cchar=⫤
-syntax match typstMathSymbol 'tack\.t' contained conceal cchar=⊥
-syntax match typstMathSymbol 'tack\.t\.big' contained conceal cchar=⟘
-syntax match typstMathSymbol 'tack\.t\.double' contained conceal cchar=⫫
-syntax match typstMathSymbol 'tack\.t\.short' contained conceal cchar=⫠
-syntax match typstMathSymbol 'tack\.b' contained conceal cchar=⊤
-syntax match typstMathSymbol 'tack\.b\.big' contained conceal cchar=⟙
-syntax match typstMathSymbol 'tack\.b\.double' contained conceal cchar=⫪
-syntax match typstMathSymbol 'tack\.b\.short' contained conceal cchar=⫟
-syntax match typstMathSymbol 'tack\.l\.r' contained conceal cchar=⟛
-syntax match typstMathSymbol 'alpha' contained conceal cchar=α
-syntax match typstMathSymbol 'beta' contained conceal cchar=β
-syntax match typstMathSymbol 'beta\.alt' contained conceal cchar=ϐ
-syntax match typstMathSymbol 'chi' contained conceal cchar=χ
-syntax match typstMathSymbol 'delta' contained conceal cchar=δ
-syntax match typstMathSymbol 'epsilon' contained conceal cchar=ε
-syntax match typstMathSymbol 'epsilon\.alt' contained conceal cchar=ϵ
-syntax match typstMathSymbol 'eta' contained conceal cchar=η
-syntax match typstMathSymbol 'gamma' contained conceal cchar=γ
-syntax match typstMathSymbol 'iota' contained conceal cchar=ι
-syntax match typstMathSymbol 'kai' contained conceal cchar=ϗ
-syntax match typstMathSymbol 'kappa' contained conceal cchar=κ
-syntax match typstMathSymbol 'kappa\.alt' contained conceal cchar=ϰ
-syntax match typstMathSymbol 'lambda' contained conceal cchar=λ
-syntax match typstMathSymbol 'mu' contained conceal cchar=μ
-syntax match typstMathSymbol 'nu' contained conceal cchar=ν
-syntax match typstMathSymbol 'ohm' contained conceal cchar=Ω
-syntax match typstMathSymbol 'ohm\.inv' contained conceal cchar=℧
-syntax match typstMathSymbol 'omega' contained conceal cchar=ω
-syntax match typstMathSymbol 'omicron' contained conceal cchar=ο
-syntax match typstMathSymbol 'phi' contained conceal cchar=φ
-syntax match typstMathSymbol 'phi\.alt' contained conceal cchar=ϕ
-syntax match typstMathSymbol 'pi' contained conceal cchar=π
-syntax match typstMathSymbol 'pi\.alt' contained conceal cchar=ϖ
-syntax match typstMathSymbol 'psi' contained conceal cchar=ψ
-syntax match typstMathSymbol 'rho' contained conceal cchar=ρ
-syntax match typstMathSymbol 'rho\.alt' contained conceal cchar=ϱ
-syntax match typstMathSymbol 'sigma' contained conceal cchar=σ
-syntax match typstMathSymbol 'sigma\.alt' contained conceal cchar=ς
-syntax match typstMathSymbol 'tau' contained conceal cchar=τ
-syntax match typstMathSymbol 'theta' contained conceal cchar=θ
-syntax match typstMathSymbol 'theta\.alt' contained conceal cchar=ϑ
-syntax match typstMathSymbol 'upsilon' contained conceal cchar=υ
-syntax match typstMathSymbol 'xi' contained conceal cchar=ξ
-syntax match typstMathSymbol 'zeta' contained conceal cchar=ζ
-syntax match typstMathSymbol 'Alpha' contained conceal cchar=Α
-syntax match typstMathSymbol 'Beta' contained conceal cchar=Β
-syntax match typstMathSymbol 'Chi' contained conceal cchar=Χ
-syntax match typstMathSymbol 'Delta' contained conceal cchar=Δ
-syntax match typstMathSymbol 'Epsilon' contained conceal cchar=Ε
-syntax match typstMathSymbol 'Eta' contained conceal cchar=Η
-syntax match typstMathSymbol 'Gamma' contained conceal cchar=Γ
-syntax match typstMathSymbol 'Iota' contained conceal cchar=Ι
-syntax match typstMathSymbol 'Kai' contained conceal cchar=Ϗ
-syntax match typstMathSymbol 'Kappa' contained conceal cchar=Κ
-syntax match typstMathSymbol 'Lambda' contained conceal cchar=Λ
-syntax match typstMathSymbol 'Mu' contained conceal cchar=Μ
-syntax match typstMathSymbol 'Nu' contained conceal cchar=Ν
-syntax match typstMathSymbol 'Omega' contained conceal cchar=Ω
-syntax match typstMathSymbol 'Omicron' contained conceal cchar=Ο
-syntax match typstMathSymbol 'Phi' contained conceal cchar=Φ
-syntax match typstMathSymbol 'Pi' contained conceal cchar=Π
-syntax match typstMathSymbol 'Psi' contained conceal cchar=Ψ
-syntax match typstMathSymbol 'Rho' contained conceal cchar=Ρ
-syntax match typstMathSymbol 'Sigma' contained conceal cchar=Σ
-syntax match typstMathSymbol 'Tau' contained conceal cchar=Τ
-syntax match typstMathSymbol 'Theta' contained conceal cchar=Θ
-syntax match typstMathSymbol 'Upsilon' contained conceal cchar=Υ
-syntax match typstMathSymbol 'Xi' contained conceal cchar=Ξ
-syntax match typstMathSymbol 'Zeta' contained conceal cchar=Ζ
-syntax match typstMathSymbol 'aleph' contained conceal cchar=א
-syntax match typstMathSymbol 'alef' contained conceal cchar=א
-syntax match typstMathSymbol 'beth' contained conceal cchar=ב
-syntax match typstMathSymbol 'bet' contained conceal cchar=ב
-syntax match typstMathSymbol 'gimmel' contained conceal cchar=ג
-syntax match typstMathSymbol 'gimel' contained conceal cchar=ג
-syntax match typstMathSymbol 'shin' contained conceal cchar=ש
-syntax match typstMathSymbol 'AA' contained conceal cchar=𝔸
-syntax match typstMathSymbol 'BB' contained conceal cchar=𝔹
-syntax match typstMathSymbol 'CC' contained conceal cchar=ℂ
-syntax match typstMathSymbol 'DD' contained conceal cchar=𝔻
-syntax match typstMathSymbol 'EE' contained conceal cchar=𝔼
-syntax match typstMathSymbol 'FF' contained conceal cchar=𝔽
-syntax match typstMathSymbol 'GG' contained conceal cchar=𝔾
-syntax match typstMathSymbol 'HH' contained conceal cchar=ℍ
-syntax match typstMathSymbol 'II' contained conceal cchar=𝕀
-syntax match typstMathSymbol 'JJ' contained conceal cchar=𝕁
-syntax match typstMathSymbol 'KK' contained conceal cchar=𝕂
-syntax match typstMathSymbol 'LL' contained conceal cchar=𝕃
-syntax match typstMathSymbol 'MM' contained conceal cchar=𝕄
-syntax match typstMathSymbol 'NN' contained conceal cchar=ℕ
-syntax match typstMathSymbol 'OO' contained conceal cchar=𝕆
-syntax match typstMathSymbol 'PP' contained conceal cchar=ℙ
-syntax match typstMathSymbol 'QQ' contained conceal cchar=ℚ
-syntax match typstMathSymbol 'RR' contained conceal cchar=ℝ
-syntax match typstMathSymbol 'SS' contained conceal cchar=𝕊
-syntax match typstMathSymbol 'TT' contained conceal cchar=𝕋
-syntax match typstMathSymbol 'UU' contained conceal cchar=𝕌
-syntax match typstMathSymbol 'VV' contained conceal cchar=𝕍
-syntax match typstMathSymbol 'WW' contained conceal cchar=𝕎
-syntax match typstMathSymbol 'XX' contained conceal cchar=𝕏
-syntax match typstMathSymbol 'YY' contained conceal cchar=𝕐
-syntax match typstMathSymbol 'ZZ' contained conceal cchar=ℤ
-syntax match typstMathSymbol 'ell' contained conceal cchar=ℓ
-syntax match typstMathSymbol 'planck' contained conceal cchar=ℎ
-syntax match typstMathSymbol 'planck\.reduce' contained conceal cchar=ℏ
-syntax match typstMathSymbol 'angstrom' contained conceal cchar=Å
-syntax match typstMathSymbol 'kelvin' contained conceal cchar=K
-syntax match typstMathSymbol 'Re' contained conceal cchar=ℜ
-syntax match typstMathSymbol 'Im' contained conceal cchar=ℑ
-syntax match typstMathSymbol 'dotless\.i' contained conceal cchar=𝚤
-syntax match typstMathSymbol 'dotless\.j' contained conceal cchar=𝚥
+call s:ConcealFn('excl', '!')
+call s:ConcealFn('excl\.double', '‼')
+call s:ConcealFn('excl\.inv', '¡')
+call s:ConcealFn('excl\.quest', '⁉')
+call s:ConcealFn('quest', '?')
+call s:ConcealFn('quest\.double', '⁇')
+call s:ConcealFn('quest\.excl', '⁈')
+call s:ConcealFn('quest\.inv', '¿')
+call s:ConcealFn('interrobang', '‽')
+call s:ConcealFn('hash', '#')
+call s:ConcealFn('hyph', '‐')
+call s:ConcealFn('hyph\.minus', '-')
+call s:ConcealFn('hyph\.nobreak', '‑')
+call s:ConcealFn('hyph\.point', '‧')
+call s:ConcealFn('hyph\.soft', '­')
+call s:ConcealFn('percent', '%')
+call s:ConcealFn('copyright', '©')
+call s:ConcealFn('copyright\.sound', '℗')
+call s:ConcealFn('permille', '‰')
+call s:ConcealFn('pilcrow', '¶')
+call s:ConcealFn('pilcrow\.rev', '⁋')
+call s:ConcealFn('section', '§')
+call s:ConcealFn('semi', ';')
+call s:ConcealFn('semi\.rev', '⁏')
+call s:ConcealFn('slash', '/')
+call s:ConcealFn('slash\.double', '⫽')
+call s:ConcealFn('slash\.triple', '⫻')
+call s:ConcealFn('slash\.big', '⧸')
+call s:ConcealFn('dots\.h\.c', '⋯')
+call s:ConcealFn('dots\.h', '…')
+call s:ConcealFn('dots\.v', '⋮')
+call s:ConcealFn('dots\.down', '⋱')
+call s:ConcealFn('dots\.up', '⋰')
+call s:ConcealFn('tilde\.op', '∼')
+call s:ConcealFn('tilde\.basic', '~')
+call s:ConcealFn('tilde\.eq', '≃')
+call s:ConcealFn('tilde\.eq\.not', '≄')
+call s:ConcealFn('tilde\.eq\.rev', '⋍')
+call s:ConcealFn('tilde\.equiv', '≅')
+call s:ConcealFn('tilde\.equiv\.not', '≇')
+call s:ConcealFn('tilde\.nequiv', '≆')
+call s:ConcealFn('tilde\.not', '≁')
+call s:ConcealFn('tilde\.rev', '∽')
+call s:ConcealFn('tilde\.rev\.equiv', '≌')
+call s:ConcealFn('tilde\.triple', '≋')
+call s:ConcealFn('acute', '´')
+call s:ConcealFn('acute\.double', '˝')
+call s:ConcealFn('breve', '˘')
+call s:ConcealFn('caret', '‸')
+call s:ConcealFn('caron', 'ˇ')
+call s:ConcealFn('hat', '^')
+call s:ConcealFn('diaer', '¨')
+call s:ConcealFn('grave', '`')
+call s:ConcealFn('macron', '¯')
+call s:ConcealFn('quote\.double', '"')
+call s:ConcealFn('quote\.single', "'")
+call s:ConcealFn('quote\.l\.double', '“')
+call s:ConcealFn('quote\.l\.single', '‘')
+call s:ConcealFn('quote\.r\.double', '”')
+call s:ConcealFn('quote\.r\.single', '’')
+call s:ConcealFn('quote\.angle\.l\.double', '«')
+call s:ConcealFn('quote\.angle\.l\.single', '‹')
+call s:ConcealFn('quote\.angle\.r\.double', '»')
+call s:ConcealFn('quote\.angle\.r\.single', '›')
+call s:ConcealFn('quote\.high\.double', '‟')
+call s:ConcealFn('quote\.high\.single', '‛')
+call s:ConcealFn('quote\.low\.double', '„')
+call s:ConcealFn('quote\.low\.single', '‚')
+call s:ConcealFn('prime', '′')
+call s:ConcealFn('prime\.rev', '‵')
+call s:ConcealFn('prime\.double', '″')
+call s:ConcealFn('prime\.double\.rev', '‶')
+call s:ConcealFn('prime\.triple', '‴')
+call s:ConcealFn('prime\.triple\.rev', '‷')
+call s:ConcealFn('prime\.quad', '⁗')
+call s:ConcealFn('plus', '+')
+call s:ConcealFn('plus\.circle', '⊕')
+call s:ConcealFn('plus\.circle\.arrow', '⟴')
+call s:ConcealFn('plus\.circle\.big', '⨁')
+call s:ConcealFn('plus\.dot', '∔')
+call s:ConcealFn('plus\.minus', '±')
+call s:ConcealFn('plus\.small', '﹢')
+call s:ConcealFn('plus\.square', '⊞')
+call s:ConcealFn('plus\.triangle', '⨹')
+call s:ConcealFn('minus', '−')
+call s:ConcealFn('minus\.circle', '⊖')
+call s:ConcealFn('minus\.dot', '∸')
+call s:ConcealFn('minus\.plus', '∓')
+call s:ConcealFn('minus\.square', '⊟')
+call s:ConcealFn('minus\.tilde', '≂')
+call s:ConcealFn('minus\.triangle', '⨺')
+call s:ConcealFn('div', '÷')
+call s:ConcealFn('div\.circle', '⨸')
+call s:ConcealFn('times', '×')
+call s:ConcealFn('times\.big', '⨉')
+call s:ConcealFn('times\.circle', '⊗')
+call s:ConcealFn('times\.circle\.big', '⨂')
+call s:ConcealFn('times\.div', '⋇')
+call s:ConcealFn('times\.three\.l', '⋋')
+call s:ConcealFn('times\.three\.r', '⋌')
+call s:ConcealFn('times\.l', '⋉')
+call s:ConcealFn('times\.r', '⋊')
+call s:ConcealFn('times\.square', '⊠')
+call s:ConcealFn('times\.triangle', '⨻')
+call s:ConcealFn('ratio', '∶')
+call s:ConcealFn('eq', '=')
+call s:ConcealFn('eq\.star', '≛')
+call s:ConcealFn('eq\.circle', '⊜')
+call s:ConcealFn('eq\.colon', '≕')
+call s:ConcealFn('eq\.def', '≝')
+call s:ConcealFn('eq\.delta', '≜')
+call s:ConcealFn('eq\.equi', '≚')
+call s:ConcealFn('eq\.est', '≙')
+call s:ConcealFn('eq\.gt', '⋝')
+call s:ConcealFn('eq\.lt', '⋜')
+call s:ConcealFn('eq\.m', '≞')
+call s:ConcealFn('eq\.not', '≠')
+call s:ConcealFn('eq\.prec', '⋞')
+call s:ConcealFn('eq\.quest', '≟')
+call s:ConcealFn('eq\.small', '﹦')
+call s:ConcealFn('eq\.succ', '⋟')
+call s:ConcealFn('eq\.triple', '≡')
+call s:ConcealFn('eq\.quad', '≣')
+call s:ConcealFn('gt', '>')
+call s:ConcealFn('gt\.circle', '⧁')
+call s:ConcealFn('gt\.curly', '≻')
+call s:ConcealFn('gt\.curly\.approx', '⪸')
+call s:ConcealFn('gt\.curly\.double', '⪼')
+call s:ConcealFn('gt\.curly\.eq', '≽')
+call s:ConcealFn('gt\.curly\.eq\.not', '⋡')
+call s:ConcealFn('gt\.curly\.equiv', '⪴')
+call s:ConcealFn('gt\.curly\.napprox', '⪺')
+call s:ConcealFn('gt\.curly\.nequiv', '⪶')
+call s:ConcealFn('gt\.curly\.not', '⊁')
+call s:ConcealFn('gt\.curly\.ntilde', '⋩')
+call s:ConcealFn('gt\.curly\.tilde', '≿')
+call s:ConcealFn('gt\.dot', '⋗')
+call s:ConcealFn('gt\.double', '≫')
+call s:ConcealFn('gt\.eq', '≥')
+call s:ConcealFn('gt\.eq\.slant', '⩾')
+call s:ConcealFn('gt\.eq\.lt', '⋛')
+call s:ConcealFn('gt\.eq\.not', '≱')
+call s:ConcealFn('gt\.equiv', '≧')
+call s:ConcealFn('gt\.lt', '≷')
+call s:ConcealFn('gt\.lt\.not', '≹')
+call s:ConcealFn('gt\.nequiv', '≩')
+call s:ConcealFn('gt\.not', '≯')
+call s:ConcealFn('gt\.ntilde', '⋧')
+call s:ConcealFn('gt\.small', '﹥')
+call s:ConcealFn('gt\.tilde', '≳')
+call s:ConcealFn('gt\.tilde\.not', '≵')
+call s:ConcealFn('gt\.tri', '⊳')
+call s:ConcealFn('gt\.tri\.eq', '⊵')
+call s:ConcealFn('gt\.tri\.eq\.not', '⋭')
+call s:ConcealFn('gt\.tri\.not', '⋫')
+call s:ConcealFn('gt\.triple', '⋙')
+call s:ConcealFn('gt\.triple\.nested', '⫸')
+call s:ConcealFn('lt', '<')
+call s:ConcealFn('lt\.circle', '⧀')
+call s:ConcealFn('lt\.curly', '≺')
+call s:ConcealFn('lt\.curly\.approx', '⪷')
+call s:ConcealFn('lt\.curly\.double', '⪻')
+call s:ConcealFn('lt\.curly\.eq', '≼')
+call s:ConcealFn('lt\.curly\.eq\.not', '⋠')
+call s:ConcealFn('lt\.curly\.equiv', '⪳')
+call s:ConcealFn('lt\.curly\.napprox', '⪹')
+call s:ConcealFn('lt\.curly\.nequiv', '⪵')
+call s:ConcealFn('lt\.curly\.not', '⊀')
+call s:ConcealFn('lt\.curly\.ntilde', '⋨')
+call s:ConcealFn('lt\.curly\.tilde', '≾')
+call s:ConcealFn('lt\.dot', '⋖')
+call s:ConcealFn('lt\.double', '≪')
+call s:ConcealFn('lt\.eq', '≤')
+call s:ConcealFn('lt\.eq\.slant', '⩽')
+call s:ConcealFn('lt\.eq\.gt', '⋚')
+call s:ConcealFn('lt\.eq\.not', '≰')
+call s:ConcealFn('lt\.equiv', '≦')
+call s:ConcealFn('lt\.gt', '≶')
+call s:ConcealFn('lt\.gt\.not', '≸')
+call s:ConcealFn('lt\.nequiv', '≨')
+call s:ConcealFn('lt\.not', '≮')
+call s:ConcealFn('lt\.ntilde', '⋦')
+call s:ConcealFn('lt\.small', '﹤')
+call s:ConcealFn('lt\.tilde', '≲')
+call s:ConcealFn('lt\.tilde\.not', '≴')
+call s:ConcealFn('lt\.tri', '⊲')
+call s:ConcealFn('lt\.tri\.eq', '⊴')
+call s:ConcealFn('lt\.tri\.eq\.not', '⋬')
+call s:ConcealFn('lt\.tri\.not', '⋪')
+call s:ConcealFn('lt\.triple', '⋘')
+call s:ConcealFn('lt\.triple\.nested', '⫷')
+call s:ConcealFn('approx', '≈')
+call s:ConcealFn('approx\.eq', '≊')
+call s:ConcealFn('approx\.not', '≉')
+call s:ConcealFn('prec', '≺')
+call s:ConcealFn('prec\.approx', '⪷')
+call s:ConcealFn('prec\.double', '⪻')
+call s:ConcealFn('prec\.eq', '≼')
+call s:ConcealFn('prec\.eq\.not', '⋠')
+call s:ConcealFn('prec\.equiv', '⪳')
+call s:ConcealFn('prec\.napprox', '⪹')
+call s:ConcealFn('prec\.nequiv', '⪵')
+call s:ConcealFn('prec\.not', '⊀')
+call s:ConcealFn('prec\.ntilde', '⋨')
+call s:ConcealFn('prec\.tilde', '≾')
+call s:ConcealFn('succ', '≻')
+call s:ConcealFn('succ\.approx', '⪸')
+call s:ConcealFn('succ\.double', '⪼')
+call s:ConcealFn('succ\.eq', '≽')
+call s:ConcealFn('succ\.eq\.not', '⋡')
+call s:ConcealFn('succ\.equiv', '⪴')
+call s:ConcealFn('succ\.napprox', '⪺')
+call s:ConcealFn('succ\.nequiv', '⪶')
+call s:ConcealFn('succ\.not', '⊁')
+call s:ConcealFn('succ\.ntilde', '⋩')
+call s:ConcealFn('succ\.tilde', '≿')
+call s:ConcealFn('equiv', '≡')
+call s:ConcealFn('equiv\.not', '≢')
+call s:ConcealFn('prop', '∝')
+call s:ConcealFn('emptyset', '∅')
+call s:ConcealFn('emptyset\.rev', '⦰')
+call s:ConcealFn('nothing', '∅')
+call s:ConcealFn('nothing\.rev', '⦰')
+call s:ConcealFn('without', '∖')
+call s:ConcealFn('complement', '∁')
+call s:ConcealFn('in', '∈')
+call s:ConcealFn('in\.not', '∉')
+call s:ConcealFn('in\.rev', '∋')
+call s:ConcealFn('in\.rev\.not', '∌')
+call s:ConcealFn('in\.rev\.small', '∍')
+call s:ConcealFn('in\.small', '∊')
+call s:ConcealFn('subset', '⊂')
+call s:ConcealFn('subset\.dot', '⪽')
+call s:ConcealFn('subset\.double', '⋐')
+call s:ConcealFn('subset\.eq', '⊆')
+call s:ConcealFn('subset\.eq\.not', '⊈')
+call s:ConcealFn('subset\.eq\.sq', '⊑')
+call s:ConcealFn('subset\.eq\.sq\.not', '⋢')
+call s:ConcealFn('subset\.neq', '⊊')
+call s:ConcealFn('subset\.not', '⊄')
+call s:ConcealFn('subset\.sq', '⊏')
+call s:ConcealFn('subset\.sq\.neq', '⋤')
+call s:ConcealFn('supset', '⊃')
+call s:ConcealFn('supset\.dot', '⪾')
+call s:ConcealFn('supset\.double', '⋑')
+call s:ConcealFn('supset\.eq', '⊇')
+call s:ConcealFn('supset\.eq\.not', '⊉')
+call s:ConcealFn('supset\.eq\.sq', '⊒')
+call s:ConcealFn('supset\.eq\.sq\.not', '⋣')
+call s:ConcealFn('supset\.neq', '⊋')
+call s:ConcealFn('supset\.not', '⊅')
+call s:ConcealFn('supset\.sq', '⊐')
+call s:ConcealFn('supset\.sq\.neq', '⋥')
+call s:ConcealFn('union', '∪')
+call s:ConcealFn('union\.arrow', '⊌')
+call s:ConcealFn('union\.big', '⋃')
+call s:ConcealFn('union\.dot', '⊍')
+call s:ConcealFn('union\.dot\.big', '⨃')
+call s:ConcealFn('union\.double', '⋓')
+call s:ConcealFn('union\.minus', '⩁')
+call s:ConcealFn('union\.or', '⩅')
+call s:ConcealFn('union\.plus', '⊎')
+call s:ConcealFn('union\.plus\.big', '⨄')
+call s:ConcealFn('union\.sq', '⊔')
+call s:ConcealFn('union\.sq\.big', '⨆')
+call s:ConcealFn('union\.sq\.double', '⩏')
+call s:ConcealFn('sect', '∩')
+call s:ConcealFn('sect\.and', '⩄')
+call s:ConcealFn('sect\.big', '⋂')
+call s:ConcealFn('sect\.dot', '⩀')
+call s:ConcealFn('sect\.double', '⋒')
+call s:ConcealFn('sect\.sq', '⊓')
+call s:ConcealFn('sect\.sq\.big', '⨅')
+call s:ConcealFn('sect\.sq\.double', '⩎')
+call s:ConcealFn('infinity', '∞')
+call s:ConcealFn('oo', '∞')
+call s:ConcealFn('diff', '∂')
+call s:ConcealFn('nabla', '∇')
+call s:ConcealFn('sum', '∑')
+call s:ConcealFn('sum\.integral', '⨋')
+call s:ConcealFn('product', '∏')
+call s:ConcealFn('product\.co', '∐')
+call s:ConcealFn('integral', '∫')
+call s:ConcealFn('integral\.arrow\.hook', '⨗')
+call s:ConcealFn('integral\.ccw', '⨑')
+call s:ConcealFn('integral\.cont', '∮')
+call s:ConcealFn('integral\.cont\.ccw', '∳')
+call s:ConcealFn('integral\.cont\.cw', '∲')
+call s:ConcealFn('integral\.cw', '∱')
+call s:ConcealFn('integral\.double', '∬')
+call s:ConcealFn('integral\.quad', '⨌')
+call s:ConcealFn('integral\.sect', '⨙')
+call s:ConcealFn('integral\.square', '⨖')
+call s:ConcealFn('integral\.surf', '∯')
+call s:ConcealFn('integral\.times', '⨘')
+call s:ConcealFn('integral\.triple', '∭')
+call s:ConcealFn('integral\.union', '⨚')
+call s:ConcealFn('integral\.vol', '∰')
+call s:ConcealFn('laplace', '∆')
+call s:ConcealFn('forall', '∀')
+call s:ConcealFn('exists', '∃')
+call s:ConcealFn('exists\.not', '∄')
+call s:ConcealFn('top', '⊤')
+call s:ConcealFn('bot', '⊥')
+call s:ConcealFn('not', '¬')
+call s:ConcealFn('and', '∧')
+call s:ConcealFn('and\.big', '⋀')
+call s:ConcealFn('and\.curly', '⋏')
+call s:ConcealFn('and\.dot', '⟑')
+call s:ConcealFn('and\.double', '⩓')
+call s:ConcealFn('or', '∨')
+call s:ConcealFn('or\.big', '⋁')
+call s:ConcealFn('or\.curly', '⋎')
+call s:ConcealFn('or\.dot', '⟇')
+call s:ConcealFn('or\.double', '⩔')
+call s:ConcealFn('xor', '⊕')
+call s:ConcealFn('xor\.big', '⨁')
+call s:ConcealFn('models', '⊧')
+call s:ConcealFn('therefore', '∴')
+call s:ConcealFn('because', '∵')
+call s:ConcealFn('qed', '∎')
+call s:ConcealFn('compose', '∘')
+call s:ConcealFn('convolve', '∗')
+call s:ConcealFn('multimap', '⊸')
+call s:ConcealFn('divides', '∣')
+call s:ConcealFn('divides\.not', '∤')
+call s:ConcealFn('wreath', '≀')
+call s:ConcealFn('parallel', '∥')
+call s:ConcealFn('parallel\.circle', '⦷')
+call s:ConcealFn('parallel\.not', '∦')
+call s:ConcealFn('perp', '⟂')
+call s:ConcealFn('perp\.circle', '⦹')
+call s:ConcealFn('diameter', '⌀')
+call s:ConcealFn('join', '⨝')
+call s:ConcealFn('join\.r', '⟖')
+call s:ConcealFn('join\.l', '⟕')
+call s:ConcealFn('join\.l\.r', '⟗')
+call s:ConcealFn('degree', '°')
+call s:ConcealFn('degree\.c', '℃')
+call s:ConcealFn('degree\.f', '℉')
+call s:ConcealFn('smash', '⨳')
+call s:ConcealFn('bitcoin', '₿')
+call s:ConcealFn('dollar', '$')
+call s:ConcealFn('euro', '€')
+call s:ConcealFn('franc', '₣')
+call s:ConcealFn('lira', '₺')
+call s:ConcealFn('peso', '₱')
+call s:ConcealFn('pound', '£')
+call s:ConcealFn('ruble', '₽')
+call s:ConcealFn('rupee', '₹')
+call s:ConcealFn('won', '₩')
+call s:ConcealFn('yen', '¥')
+call s:ConcealFn('ballot', '☐')
+call s:ConcealFn('ballot\.x', '☒')
+call s:ConcealFn('checkmark', '✓')
+call s:ConcealFn('checkmark\.light', '🗸')
+call s:ConcealFn('floral', '❦')
+call s:ConcealFn('floral\.l', '☙')
+call s:ConcealFn('floral\.r', '❧')
+call s:ConcealFn('notes\.up', '🎜')
+call s:ConcealFn('notes\.down', '🎝')
+call s:ConcealFn('refmark', '※')
+call s:ConcealFn('servicemark', '℠')
+call s:ConcealFn('maltese', '✠')
+call s:ConcealFn('suit\.club', '♣')
+call s:ConcealFn('suit\.diamond', '♦')
+call s:ConcealFn('suit\.heart', '♥')
+call s:ConcealFn('suit\.spade', '♠')
+call s:ConcealFn('bullet', '•')
+call s:ConcealFn('circle\.stroked', '○')
+call s:ConcealFn('circle\.stroked\.tiny', '∘')
+call s:ConcealFn('circle\.stroked\.small', '⚬')
+call s:ConcealFn('circle\.stroked\.big', '◯')
+call s:ConcealFn('circle\.filled', '●')
+call s:ConcealFn('circle\.filled\.tiny', '⦁')
+call s:ConcealFn('circle\.filled\.small', '∙')
+call s:ConcealFn('circle\.filled\.big', '⬤')
+call s:ConcealFn('circle\.dotted', '◌')
+call s:ConcealFn('circle\.nested', '⊚')
+call s:ConcealFn('ellipse\.stroked\.h', '⬭')
+call s:ConcealFn('ellipse\.stroked\.v', '⬯')
+call s:ConcealFn('ellipse\.filled\.h', '⬬')
+call s:ConcealFn('ellipse\.filled\.v', '⬮')
+call s:ConcealFn('triangle\.stroked\.r', '▷')
+call s:ConcealFn('triangle\.stroked\.l', '◁')
+call s:ConcealFn('triangle\.stroked\.t', '△')
+call s:ConcealFn('triangle\.stroked\.b', '▽')
+call s:ConcealFn('triangle\.stroked\.bl', '◺')
+call s:ConcealFn('triangle\.stroked\.br', '◿')
+call s:ConcealFn('triangle\.stroked\.tl', '◸')
+call s:ConcealFn('triangle\.stroked\.tr', '◹')
+call s:ConcealFn('triangle\.stroked\.small\.r', '▹')
+call s:ConcealFn('triangle\.stroked\.small\.b', '▿')
+call s:ConcealFn('triangle\.stroked\.small\.l', '◃')
+call s:ConcealFn('triangle\.stroked\.small\.t', '▵')
+call s:ConcealFn('triangle\.stroked\.rounded', '🛆')
+call s:ConcealFn('triangle\.stroked\.nested', '⟁')
+call s:ConcealFn('triangle\.stroked\.dot', '◬')
+call s:ConcealFn('triangle\.filled\.r', '▶')
+call s:ConcealFn('triangle\.filled\.l', '◀')
+call s:ConcealFn('triangle\.filled\.t', '▲')
+call s:ConcealFn('triangle\.filled\.b', '▼')
+call s:ConcealFn('triangle\.filled\.bl', '◣')
+call s:ConcealFn('triangle\.filled\.br', '◢')
+call s:ConcealFn('triangle\.filled\.tl', '◤')
+call s:ConcealFn('triangle\.filled\.tr', '◥')
+call s:ConcealFn('triangle\.filled\.small\.r', '▸')
+call s:ConcealFn('triangle\.filled\.small\.b', '▾')
+call s:ConcealFn('triangle\.filled\.small\.l', '◂')
+call s:ConcealFn('triangle\.filled\.small\.t', '▴')
+call s:ConcealFn('square\.stroked', '□')
+call s:ConcealFn('square\.stroked\.tiny', '▫')
+call s:ConcealFn('square\.stroked\.small', '◽')
+call s:ConcealFn('square\.stroked\.medium', '◻')
+call s:ConcealFn('square\.stroked\.big', '⬜')
+call s:ConcealFn('square\.stroked\.dotted', '⬚')
+call s:ConcealFn('square\.stroked\.rounded', '▢')
+call s:ConcealFn('square\.filled', '■')
+call s:ConcealFn('square\.filled\.tiny', '▪')
+call s:ConcealFn('square\.filled\.small', '◾')
+call s:ConcealFn('square\.filled\.medium', '◼')
+call s:ConcealFn('square\.filled\.big', '⬛')
+call s:ConcealFn('rect\.stroked\.h', '▭')
+call s:ConcealFn('rect\.stroked\.v', '▯')
+call s:ConcealFn('rect\.filled\.h', '▬')
+call s:ConcealFn('rect\.filled\.v', '▮')
+call s:ConcealFn('penta\.stroked', '⬠')
+call s:ConcealFn('penta\.filled', '⬟')
+call s:ConcealFn('hexa\.stroked', '⬡')
+call s:ConcealFn('hexa\.filled', '⬢')
+call s:ConcealFn('diamond\.stroked', '◇')
+call s:ConcealFn('diamond\.stroked\.small', '⋄')
+call s:ConcealFn('diamond\.stroked\.medium', '⬦')
+call s:ConcealFn('diamond\.stroked\.dot', '⟐')
+call s:ConcealFn('diamond\.filled', '◆')
+call s:ConcealFn('diamond\.filled\.medium', '⬥')
+call s:ConcealFn('diamond\.filled\.small', '⬩')
+call s:ConcealFn('lozenge\.stroked', '◊')
+call s:ConcealFn('lozenge\.stroked\.small', '⬫')
+call s:ConcealFn('lozenge\.stroked\.medium', '⬨')
+call s:ConcealFn('lozenge\.filled', '⧫')
+call s:ConcealFn('lozenge\.filled\.small', '⬪')
+call s:ConcealFn('lozenge\.filled\.medium', '⬧')
+call s:ConcealFn('star\.op', '⋆')
+call s:ConcealFn('star\.stroked', '★')
+call s:ConcealFn('star\.filled', '★')
+call s:ConcealFn('arrow\.r', '→')
+call s:ConcealFn('arrow\.r\.long\.bar', '⟼')
+call s:ConcealFn('arrow\.r\.bar', '↦')
+call s:ConcealFn('arrow\.r\.curve', '⤷')
+call s:ConcealFn('arrow\.r\.dashed', '⇢')
+call s:ConcealFn('arrow\.r\.dotted', '⤑')
+call s:ConcealFn('arrow\.r\.double', '⇒')
+call s:ConcealFn('arrow\.r\.double\.bar', '⤇')
+call s:ConcealFn('arrow\.r\.double\.long', '⟹')
+call s:ConcealFn('arrow\.r\.double\.long\.bar', '⟾')
+call s:ConcealFn('arrow\.r\.double\.not', '⇏')
+call s:ConcealFn('arrow\.r\.filled', '➡')
+call s:ConcealFn('arrow\.r\.hook', '↪')
+call s:ConcealFn('arrow\.r\.long', '⟶')
+call s:ConcealFn('arrow\.r\.long\.squiggly', '⟿')
+call s:ConcealFn('arrow\.r\.loop', '↬')
+call s:ConcealFn('arrow\.r\.not', '↛')
+call s:ConcealFn('arrow\.r\.quad', '⭆')
+call s:ConcealFn('arrow\.r\.squiggly', '⇝')
+call s:ConcealFn('arrow\.r\.stop', '⇥')
+call s:ConcealFn('arrow\.r\.stroked', '⇨')
+call s:ConcealFn('arrow\.r\.tail', '↣')
+call s:ConcealFn('arrow\.r\.triple', '⇛')
+call s:ConcealFn('arrow\.r\.twohead\.bar', '⤅')
+call s:ConcealFn('arrow\.r\.twohead', '↠')
+call s:ConcealFn('arrow\.r\.wave', '↝')
+call s:ConcealFn('arrow\.l', '←')
+call s:ConcealFn('arrow\.l\.bar', '↤')
+call s:ConcealFn('arrow\.l\.curve', '⤶')
+call s:ConcealFn('arrow\.l\.dashed', '⇠')
+call s:ConcealFn('arrow\.l\.dotted', '⬸')
+call s:ConcealFn('arrow\.l\.double', '⇐')
+call s:ConcealFn('arrow\.l\.double\.bar', '⤆')
+call s:ConcealFn('arrow\.l\.double\.long', '⟸')
+call s:ConcealFn('arrow\.l\.double\.long\.bar', '⟽')
+call s:ConcealFn('arrow\.l\.double\.not', '⇍')
+call s:ConcealFn('arrow\.l\.filled', '⬅')
+call s:ConcealFn('arrow\.l\.hook', '↩')
+call s:ConcealFn('arrow\.l\.long', '⟵')
+call s:ConcealFn('arrow\.l\.long\.bar', '⟻')
+call s:ConcealFn('arrow\.l\.long\.squiggly', '⬳')
+call s:ConcealFn('arrow\.l\.loop', '↫')
+call s:ConcealFn('arrow\.l\.not', '↚')
+call s:ConcealFn('arrow\.l\.quad', '⭅')
+call s:ConcealFn('arrow\.l\.squiggly', '⇜')
+call s:ConcealFn('arrow\.l\.stop', '⇤')
+call s:ConcealFn('arrow\.l\.stroked', '⇦')
+call s:ConcealFn('arrow\.l\.tail', '↢')
+call s:ConcealFn('arrow\.l\.triple', '⇚')
+call s:ConcealFn('arrow\.l\.twohead\.bar', '⬶')
+call s:ConcealFn('arrow\.l\.twohead', '↞')
+call s:ConcealFn('arrow\.l\.wave', '↜')
+call s:ConcealFn('arrow\.t', '↑')
+call s:ConcealFn('arrow\.t\.bar', '↥')
+call s:ConcealFn('arrow\.t\.curve', '⤴')
+call s:ConcealFn('arrow\.t\.dashed', '⇡')
+call s:ConcealFn('arrow\.t\.double', '⇑')
+call s:ConcealFn('arrow\.t\.filled', '⬆')
+call s:ConcealFn('arrow\.t\.quad', '⟰')
+call s:ConcealFn('arrow\.t\.stop', '⤒')
+call s:ConcealFn('arrow\.t\.stroked', '⇧')
+call s:ConcealFn('arrow\.t\.triple', '⤊')
+call s:ConcealFn('arrow\.t\.twohead', '↟')
+call s:ConcealFn('arrow\.b', '↓')
+call s:ConcealFn('arrow\.b\.bar', '↧')
+call s:ConcealFn('arrow\.b\.curve', '⤵')
+call s:ConcealFn('arrow\.b\.dashed', '⇣')
+call s:ConcealFn('arrow\.b\.double', '⇓')
+call s:ConcealFn('arrow\.b\.filled', '⬇')
+call s:ConcealFn('arrow\.b\.quad', '⟱')
+call s:ConcealFn('arrow\.b\.stop', '⤓')
+call s:ConcealFn('arrow\.b\.stroked', '⇩')
+call s:ConcealFn('arrow\.b\.triple', '⤋')
+call s:ConcealFn('arrow\.b\.twohead', '↡')
+call s:ConcealFn('arrow\.l\.r', '↔')
+call s:ConcealFn('arrow\.l\.r\.double', '⇔')
+call s:ConcealFn('arrow\.l\.r\.double\.long', '⟺')
+call s:ConcealFn('arrow\.l\.r\.double\.not', '⇎')
+call s:ConcealFn('arrow\.l\.r\.filled', '⬌')
+call s:ConcealFn('arrow\.l\.r\.long', '⟷')
+call s:ConcealFn('arrow\.l\.r\.not', '↮')
+call s:ConcealFn('arrow\.l\.r\.stroked', '⬄')
+call s:ConcealFn('arrow\.l\.r\.wave', '↭')
+call s:ConcealFn('arrow\.t\.b', '↕')
+call s:ConcealFn('arrow\.t\.b\.double', '⇕')
+call s:ConcealFn('arrow\.t\.b\.filled', '⬍')
+call s:ConcealFn('arrow\.t\.b\.stroked', '⇳')
+call s:ConcealFn('arrow\.tr', '↗')
+call s:ConcealFn('arrow\.tr\.double', '⇗')
+call s:ConcealFn('arrow\.tr\.filled', '⬈')
+call s:ConcealFn('arrow\.tr\.hook', '⤤')
+call s:ConcealFn('arrow\.tr\.stroked', '⬀')
+call s:ConcealFn('arrow\.br', '↘')
+call s:ConcealFn('arrow\.br\.double', '⇘')
+call s:ConcealFn('arrow\.br\.filled', '⬊')
+call s:ConcealFn('arrow\.br\.hook', '⤥')
+call s:ConcealFn('arrow\.br\.stroked', '⬂')
+call s:ConcealFn('arrow\.tl', '↖')
+call s:ConcealFn('arrow\.tl\.double', '⇖')
+call s:ConcealFn('arrow\.tl\.filled', '⬉')
+call s:ConcealFn('arrow\.tl\.hook', '⤣')
+call s:ConcealFn('arrow\.tl\.stroked', '⬁')
+call s:ConcealFn('arrow\.bl', '↙')
+call s:ConcealFn('arrow\.bl\.double', '⇙')
+call s:ConcealFn('arrow\.bl\.filled', '⬋')
+call s:ConcealFn('arrow\.bl\.hook', '⤦')
+call s:ConcealFn('arrow\.bl\.stroked', '⬃')
+call s:ConcealFn('arrow\.tl\.br', '⤡')
+call s:ConcealFn('arrow\.tr\.bl', '⤢')
+call s:ConcealFn('arrow\.ccw', '↺')
+call s:ConcealFn('arrow\.ccw\.half', '↶')
+call s:ConcealFn('arrow\.cw', '↻')
+call s:ConcealFn('arrow\.cw\.half', '↷')
+call s:ConcealFn('arrow\.zigzag', '↯')
+call s:ConcealFn('arrows\.rr', '⇉')
+call s:ConcealFn('arrows\.ll', '⇇')
+call s:ConcealFn('arrows\.tt', '⇈')
+call s:ConcealFn('arrows\.bb', '⇊')
+call s:ConcealFn('arrows\.lr', '⇆')
+call s:ConcealFn('arrows\.lr\.stop', '↹')
+call s:ConcealFn('arrows\.rl', '⇄')
+call s:ConcealFn('arrows\.tb', '⇅')
+call s:ConcealFn('arrows\.bt', '⇵')
+call s:ConcealFn('arrows\.rrr', '⇶')
+call s:ConcealFn('arrows\.lll', '⬱')
+call s:ConcealFn('arrowhead\.t', '⌃')
+call s:ConcealFn('arrowhead\.b', '⌄')
+call s:ConcealFn('harpoon\.rt', '⇀')
+call s:ConcealFn('harpoon\.rt\.bar', '⥛')
+call s:ConcealFn('harpoon\.rt\.stop', '⥓')
+call s:ConcealFn('harpoon\.rb', '⇁')
+call s:ConcealFn('harpoon\.rb\.bar', '⥟')
+call s:ConcealFn('harpoon\.rb\.stop', '⥗')
+call s:ConcealFn('harpoon\.lt', '↼')
+call s:ConcealFn('harpoon\.lt\.bar', '⥚')
+call s:ConcealFn('harpoon\.lt\.stop', '⥒')
+call s:ConcealFn('harpoon\.lb', '↽')
+call s:ConcealFn('harpoon\.lb\.bar', '⥞')
+call s:ConcealFn('harpoon\.lb\.stop', '⥖')
+call s:ConcealFn('harpoon\.tl', '↿')
+call s:ConcealFn('harpoon\.tl\.bar', '⥠')
+call s:ConcealFn('harpoon\.tl\.stop', '⥘')
+call s:ConcealFn('harpoon\.tr', '↾')
+call s:ConcealFn('harpoon\.tr\.bar', '⥜')
+call s:ConcealFn('harpoon\.tr\.stop', '⥔')
+call s:ConcealFn('harpoon\.bl', '⇃')
+call s:ConcealFn('harpoon\.bl\.bar', '⥡')
+call s:ConcealFn('harpoon\.bl\.stop', '⥙')
+call s:ConcealFn('harpoon\.br', '⇂')
+call s:ConcealFn('harpoon\.br\.bar', '⥝')
+call s:ConcealFn('harpoon\.br\.stop', '⥕')
+call s:ConcealFn('harpoon\.lt\.rt', '⥎')
+call s:ConcealFn('harpoon\.lb\.rb', '⥐')
+call s:ConcealFn('harpoon\.lb\.rt', '⥋')
+call s:ConcealFn('harpoon\.lt\.rb', '⥊')
+call s:ConcealFn('harpoon\.tl\.bl', '⥑')
+call s:ConcealFn('harpoon\.tr\.br', '⥏')
+call s:ConcealFn('harpoon\.tl\.br', '⥍')
+call s:ConcealFn('harpoon\.tr\.bl', '⥌')
+call s:ConcealFn('harpoons\.rtrb', '⥤')
+call s:ConcealFn('harpoons\.blbr', '⥥')
+call s:ConcealFn('harpoons\.bltr', '⥯')
+call s:ConcealFn('harpoons\.lbrb', '⥧')
+call s:ConcealFn('harpoons\.ltlb', '⥢')
+call s:ConcealFn('harpoons\.ltrb', '⇋')
+call s:ConcealFn('harpoons\.ltrt', '⥦')
+call s:ConcealFn('harpoons\.rblb', '⥩')
+call s:ConcealFn('harpoons\.rtlb', '⇌')
+call s:ConcealFn('harpoons\.rtlt', '⥨')
+call s:ConcealFn('harpoons\.tlbr', '⥮')
+call s:ConcealFn('harpoons\.tltr', '⥣')
+call s:ConcealFn('tack\.r', '⊢')
+call s:ConcealFn('tack\.r\.not', '⊬')
+call s:ConcealFn('tack\.r\.long', '⟝')
+call s:ConcealFn('tack\.r\.short', '⊦')
+call s:ConcealFn('tack\.r\.double', '⊨')
+call s:ConcealFn('tack\.r\.double\.not', '⊭')
+call s:ConcealFn('tack\.l', '⊣')
+call s:ConcealFn('tack\.l\.long', '⟞')
+call s:ConcealFn('tack\.l\.short', '⫞')
+call s:ConcealFn('tack\.l\.double', '⫤')
+call s:ConcealFn('tack\.t', '⊥')
+call s:ConcealFn('tack\.t\.big', '⟘')
+call s:ConcealFn('tack\.t\.double', '⫫')
+call s:ConcealFn('tack\.t\.short', '⫠')
+call s:ConcealFn('tack\.b', '⊤')
+call s:ConcealFn('tack\.b\.big', '⟙')
+call s:ConcealFn('tack\.b\.double', '⫪')
+call s:ConcealFn('tack\.b\.short', '⫟')
+call s:ConcealFn('tack\.l\.r', '⟛')
+call s:ConcealFn('alpha', 'α')
+call s:ConcealFn('beta', 'β')
+call s:ConcealFn('beta\.alt', 'ϐ')
+call s:ConcealFn('chi', 'χ')
+call s:ConcealFn('delta', 'δ')
+call s:ConcealFn('epsilon', 'ε')
+call s:ConcealFn('epsilon\.alt', 'ϵ')
+call s:ConcealFn('eta', 'η')
+call s:ConcealFn('gamma', 'γ')
+call s:ConcealFn('iota', 'ι')
+call s:ConcealFn('kai', 'ϗ')
+call s:ConcealFn('kappa', 'κ')
+call s:ConcealFn('kappa\.alt', 'ϰ')
+call s:ConcealFn('lambda', 'λ')
+call s:ConcealFn('mu', 'μ')
+call s:ConcealFn('nu', 'ν')
+call s:ConcealFn('ohm', 'Ω')
+call s:ConcealFn('ohm\.inv', '℧')
+call s:ConcealFn('omega', 'ω')
+call s:ConcealFn('omicron', 'ο')
+call s:ConcealFn('phi', 'φ')
+call s:ConcealFn('phi\.alt', 'ϕ')
+call s:ConcealFn('pi', 'π')
+call s:ConcealFn('pi\.alt', 'ϖ')
+call s:ConcealFn('psi', 'ψ')
+call s:ConcealFn('rho', 'ρ')
+call s:ConcealFn('rho\.alt', 'ϱ')
+call s:ConcealFn('sigma', 'σ')
+call s:ConcealFn('sigma\.alt', 'ς')
+call s:ConcealFn('tau', 'τ')
+call s:ConcealFn('theta', 'θ')
+call s:ConcealFn('theta\.alt', 'ϑ')
+call s:ConcealFn('upsilon', 'υ')
+call s:ConcealFn('xi', 'ξ')
+call s:ConcealFn('zeta', 'ζ')
+call s:ConcealFn('Alpha', 'Α')
+call s:ConcealFn('Beta', 'Β')
+call s:ConcealFn('Chi', 'Χ')
+call s:ConcealFn('Delta', 'Δ')
+call s:ConcealFn('Epsilon', 'Ε')
+call s:ConcealFn('Eta', 'Η')
+call s:ConcealFn('Gamma', 'Γ')
+call s:ConcealFn('Iota', 'Ι')
+call s:ConcealFn('Kai', 'Ϗ')
+call s:ConcealFn('Kappa', 'Κ')
+call s:ConcealFn('Lambda', 'Λ')
+call s:ConcealFn('Mu', 'Μ')
+call s:ConcealFn('Nu', 'Ν')
+call s:ConcealFn('Omega', 'Ω')
+call s:ConcealFn('Omicron', 'Ο')
+call s:ConcealFn('Phi', 'Φ')
+call s:ConcealFn('Pi', 'Π')
+call s:ConcealFn('Psi', 'Ψ')
+call s:ConcealFn('Rho', 'Ρ')
+call s:ConcealFn('Sigma', 'Σ')
+call s:ConcealFn('Tau', 'Τ')
+call s:ConcealFn('Theta', 'Θ')
+call s:ConcealFn('Upsilon', 'Υ')
+call s:ConcealFn('Xi', 'Ξ')
+call s:ConcealFn('Zeta', 'Ζ')
+call s:ConcealFn('aleph', 'א')
+call s:ConcealFn('alef', 'א')
+call s:ConcealFn('beth', 'ב')
+call s:ConcealFn('bet', 'ב')
+call s:ConcealFn('gimmel', 'ג')
+call s:ConcealFn('gimel', 'ג')
+call s:ConcealFn('shin', 'ש')
+call s:ConcealFn('AA', '𝔸')
+call s:ConcealFn('BB', '𝔹')
+call s:ConcealFn('CC', 'ℂ')
+call s:ConcealFn('DD', '𝔻')
+call s:ConcealFn('EE', '𝔼')
+call s:ConcealFn('FF', '𝔽')
+call s:ConcealFn('GG', '𝔾')
+call s:ConcealFn('HH', 'ℍ')
+call s:ConcealFn('II', '𝕀')
+call s:ConcealFn('JJ', '𝕁')
+call s:ConcealFn('KK', '𝕂')
+call s:ConcealFn('LL', '𝕃')
+call s:ConcealFn('MM', '𝕄')
+call s:ConcealFn('NN', 'ℕ')
+call s:ConcealFn('OO', '𝕆')
+call s:ConcealFn('PP', 'ℙ')
+call s:ConcealFn('QQ', 'ℚ')
+call s:ConcealFn('RR', 'ℝ')
+call s:ConcealFn('SS', '𝕊')
+call s:ConcealFn('TT', '𝕋')
+call s:ConcealFn('UU', '𝕌')
+call s:ConcealFn('VV', '𝕍')
+call s:ConcealFn('WW', '𝕎')
+call s:ConcealFn('XX', '𝕏')
+call s:ConcealFn('YY', '𝕐')
+call s:ConcealFn('ZZ', 'ℤ')
+call s:ConcealFn('ell', 'ℓ')
+call s:ConcealFn('planck', 'ℎ')
+call s:ConcealFn('planck\.reduce', 'ℏ')
+call s:ConcealFn('angstrom', 'Å')
+call s:ConcealFn('kelvin', 'K')
+call s:ConcealFn('Re', 'ℜ')
+call s:ConcealFn('Im', 'ℑ')
+call s:ConcealFn('dotless\.i', '𝚤')
+call s:ConcealFn('dotless\.j', '𝚥')
