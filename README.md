@@ -6,6 +6,15 @@ Vim Conceal for Typst
 
 </div>
 
+### Before
+<img src="media/noconceal.png" width=60% />
+
+### After
+<img src="media/conceal.png" width=60% />
+
+### Output
+<img src="media/output.png" width=60% />
+
 ## Installation
 
 ```vim
