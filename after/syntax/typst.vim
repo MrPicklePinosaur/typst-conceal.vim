@@ -1,3 +1,7 @@
+" Language: Typst
+" Maintainer: MrPicklePinosaur
+" Latest Revision: Oct 2023
+
 if !has('conceal')
     finish
 endif
