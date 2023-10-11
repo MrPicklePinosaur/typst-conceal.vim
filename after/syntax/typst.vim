@@ -333,7 +333,7 @@ syntax match typstMathNumber
 
 
 fun! s:ConcealMathSym(pat, cchar)
-    exe "syntax match typstMathSymbol '".a:pat."' contained conceal cchar=".a:cchar
+    exe "syntax match typstMathSymbol '\\<".a:pat."\\>' contained conceal cchar=".a:cchar
     exe "syntax match typstHashtagFunction '#sym\.".a:pat."' conceal cchar=".a:cchar
 endfun
 
@@ -421,6 +421,7 @@ if g:typst_conceal_math == 1
     call s:ConcealMathSym('dash\.colon', '∹')
     call s:ConcealMathSym('dash\.circle', '⊝')
     call s:ConcealMathSym('dash\.wave\.double', '〰')
+    call s:ConcealMathSym('dot', '·')
     call s:ConcealMathSym('dot\.op', '⋅')
     call s:ConcealMathSym('dot\.basic', '.')
     call s:ConcealMathSym('dot\.c', '·')
