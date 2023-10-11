@@ -328,14 +328,13 @@ syntax match typstMathNumber
     \ contained
 
 
-" Mathmode shorthands
-syntax match typMathShorthand '\[|' conceal cchar=⟦
-syntax match typMathShorthand '\.\.\.' conceal cchar=…
-syntax match typMathShorthand '!=' conceal cchar=≠
-
 fun! s:ConcealMathSym(pat, cchar)
     exe "syntax match typstMathSymbol '".a:pat."' contained conceal cchar=".a:cchar
     exe "syntax match typstHashtagFunction '#sym\.".a:pat."' conceal cchar=".a:cchar
+endfun
+
+fun! s:ConcealMathShorthand(pat, cchar)
+    exe "syntax match typstMathSymbol '".a:pat."' contained conceal cchar=".a:cchar
 endfun
 
 " Math Symbols
@@ -1165,6 +1164,46 @@ if g:typst_conceal_math == 1
     call s:ConcealMathSym('Im', 'ℑ')
     call s:ConcealMathSym('dotless\.i', '𝚤')
     call s:ConcealMathSym('dotless\.j', '𝚥')
+
+    " mathmode shorthands
+    call s:ConcealMathShorthand('\.\.\.', '…')
+    " call s:ConcealMathShorthand('-', '\u{2212}')
+    " call s:ConcealMathShorthand("'", '′')
+    call s:ConcealMathShorthand('\*', '∗')
+    call s:ConcealMathShorthand('!=', '≠')
+    call s:ConcealMathShorthand(':=', '≔')
+    call s:ConcealMathShorthand('::=', '⩴')
+    call s:ConcealMathShorthand('=:', '≕')
+    call s:ConcealMathShorthand('<<', '≪')
+    call s:ConcealMathShorthand('<<<', '⋘')
+    call s:ConcealMathShorthand('>>', '≫')
+    call s:ConcealMathShorthand('>>>', '⋙')
+    call s:ConcealMathShorthand('<=', '≤')
+    call s:ConcealMathShorthand('>=', '≥')
+    call s:ConcealMathShorthand('->', '→')
+    call s:ConcealMathShorthand('-->', '⟶')
+    call s:ConcealMathShorthand('|->', '↦')
+    call s:ConcealMathShorthand('>->', '↣')
+    call s:ConcealMathShorthand('->>', '↠')
+    call s:ConcealMathShorthand('<-', '←')
+    call s:ConcealMathShorthand('<--', '⟵')
+    call s:ConcealMathShorthand('<-<', '↢')
+    call s:ConcealMathShorthand('<<-', '↞')
+    call s:ConcealMathShorthand('<->', '↔')
+    call s:ConcealMathShorthand('<-->', '⟷')
+    call s:ConcealMathShorthand('~>', '⇝')
+    call s:ConcealMathShorthand('~~>', '⟿')
+    call s:ConcealMathShorthand('<~', '⇜')
+    call s:ConcealMathShorthand('<~~', '⬳')
+    call s:ConcealMathShorthand('=>', '⇒')
+    call s:ConcealMathShorthand('|=>', '⤇')
+    call s:ConcealMathShorthand('==>', '⟹')
+    call s:ConcealMathShorthand('<==', '⟸')
+    call s:ConcealMathShorthand('<=>', '⇔')
+    call s:ConcealMathShorthand('<==>', '⟺')
+    call s:ConcealMathShorthand('\[|', '⟦')
+    call s:ConcealMathShorthand('|\]', '⟧')
+    call s:ConcealMathShorthand('||', '‖')
 end
 
 fun! s:ConcealEmoji(pat, cchar)
