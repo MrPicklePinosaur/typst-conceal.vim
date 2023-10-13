@@ -334,7 +334,7 @@ syntax match typstMathNumber
 
 fun! s:ConcealMathSym(pat, cchar)
     exe "syntax match typstMathSymbol '\\<".a:pat."\\>' contained conceal cchar=".a:cchar
-    exe "syntax match typstHashtagFunction '#sym\.".a:pat."' conceal cchar=".a:cchar
+    exe "syntax match typstHashtagFunction '#sym\.".a:pat."\\>' conceal cchar=".a:cchar
 endfun
 
 fun! s:ConcealMathShorthand(pat, cchar)
@@ -1196,10 +1196,10 @@ if g:typst_conceal_math == 1
     call s:ConcealMathShorthand('<<-', '↞')
     call s:ConcealMathShorthand('<->', '↔')
     call s:ConcealMathShorthand('<-->', '⟷')
-    call s:ConcealMathShorthand('~>', '⇝')
-    call s:ConcealMathShorthand('~~>', '⟿')
-    call s:ConcealMathShorthand('<~', '⇜')
-    call s:ConcealMathShorthand('<~~', '⬳')
+    call s:ConcealMathShorthand('\~>', '⇝')
+    call s:ConcealMathShorthand('\~\~>', '⟿')
+    call s:ConcealMathShorthand('<\~', '⇜')
+    call s:ConcealMathShorthand('<\~\~', '⬳')
     call s:ConcealMathShorthand('=>', '⇒')
     call s:ConcealMathShorthand('|=>', '⤇')
     call s:ConcealMathShorthand('==>', '⟹')
@@ -1212,7 +1212,7 @@ if g:typst_conceal_math == 1
 end
 
 fun! s:ConcealEmoji(pat, cchar)
-    exe "syntax match typstHashtagFunction '#emoji\.".a:pat."' conceal cchar=".a:cchar
+    exe "syntax match typstHashtagFunction '#emoji\.".a:pat."\\>' conceal cchar=".a:cchar
 endfun
 
 " Emoji
